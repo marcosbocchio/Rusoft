@@ -1,19 +1,23 @@
 <template>
   <main>
-    <section class="section bg-hero">
-      <div class="container">
-        <h1 style="margin: 0 0 10px; font-size: 40px">{{ hero.headline }}</h1>
-        <p style="margin: 0 0 20px; opacity: 0.9; max-width: 800px">
-          {{ hero.subheadline }}
-        </p>
-        <router-link to="/contacto" class="button-primary">{{
-          hero.primary_cta.label
-        }}</router-link>
+    <section class="hero-section">
+      <div class="hero-content">
+        <div class="hero-text">
+          <h1 class="hero-title">{{ hero.headline }}</h1>
+          <p class="hero-subtitle">{{ hero.subheadline }}</p>
+          <div class="hero-buttons">
+            <router-link to="/contacto" class="button-primary hero-btn">{{
+              hero.primary_cta.label
+            }}</router-link>
+            <a href="#servicios" class="button-secondary hero-btn">Nuestros Servicios</a>
+          </div>
+        </div>
       </div>
+      <div class="hero-overlay"></div>
     </section>
 
 
-    <section class="section bg-alt">
+    <section id="servicios" class="section bg-alt">
       <div class="container">
         <h2 ref="servicesTitle" style="margin-top: 0">{{ services.title }}</h2>
         <div
@@ -719,6 +723,16 @@ export default defineComponent({
   
   .tech-name {
     font-size: 11px;
+  }
+  
+  .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .hero-btn {
+    width: 100%;
+    max-width: 280px;
   }
 }
 </style>

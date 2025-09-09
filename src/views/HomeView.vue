@@ -1,7 +1,7 @@
 <template>
   <main>
     <section class="hero-section">
-      <video class="hero-video" autoplay muted loop playsinline>
+      <video class="hero-video" :class="{ 'video-fixed': isVideoFixed }" autoplay muted loop playsinline>
         <source src="@/assets/video-fondo.mp4" type="video/mp4">
       </video>
       <div class="hero-content">
@@ -147,6 +147,7 @@ export default defineComponent({
     const isVisible = ref(false);
     const isTechVisible = ref(false);
     const isServicesVisible = ref(false);
+    const isVideoFixed = ref(true);
     const clientsTitle = ref<HTMLElement | null>(null);
     const techTitle = ref<HTMLElement | null>(null);
     const servicesTitle = ref<HTMLElement | null>(null);
@@ -387,6 +388,8 @@ export default defineComponent({
         
         techObserver.observe(techTitle.value);
       }
+
+      window.addEventListener('scroll', handleScroll);
     });
 
     onUnmounted(() => {
@@ -399,9 +402,16 @@ export default defineComponent({
       if (servicesObserver) {
         servicesObserver.disconnect();
       }
+      window.removeEventListener('scroll', handleScroll);
     });
 
-    return { hero, services, technologies, clients, isVisible, isTechVisible, isServicesVisible, clientsTitle, techTitle, servicesTitle, getServiceIcon };
+    // Control del video basado en scroll
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      isVideoFixed.value = scrollY < 100; // Solo fijo cuando estás cerca del top
+    };
+
+    return { hero, services, technologies, clients, isVisible, isTechVisible, isServicesVisible, isVideoFixed, clientsTitle, techTitle, servicesTitle, getServiceIcon, handleScroll };
   },
 });
 </script>
@@ -547,7 +557,7 @@ export default defineComponent({
   flex-direction: column;
   align-items: center;
   padding: 20px 16px;
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(255, 255, 255, 0.4);
   border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 12px;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -567,7 +577,7 @@ export default defineComponent({
 
 .tech-item:hover {
   transform: translateY(-4px) scale(1.05);
-  background: rgba(255, 255, 255, 1);
+  background: rgba(255, 255, 255, 0.6);
   border-color: #2dd4bf;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
 }
@@ -579,12 +589,12 @@ export default defineComponent({
   align-items: center;
   justify-content: center;
   margin-bottom: 12px;
-  color: #2dd4bf;
+  color: #3b82f6;
   transition: all 0.3s ease;
 }
 
 .tech-item:hover .tech-icon {
-  color: #22c55e;
+  color: #1d4ed8;
   transform: scale(1.1);
 }
 

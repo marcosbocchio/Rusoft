@@ -155,8 +155,15 @@ const preloaderModule: Module<PreloaderState, any> = {
         dispatch('preloadAsset', asset)
       );
 
+      // Timeout de seguridad de 30 segundos
+      const timeoutPromise = new Promise((_, reject) => {
+        setTimeout(() => {
+          reject(new Error('Timeout: La precarga tardó demasiado'));
+        }, 30000);
+      });
+
       try {
-        await Promise.all(loadPromises);
+        await Promise.race([Promise.all(loadPromises), timeoutPromise]);
         
         // Verificar tiempo mínimo de visualización
         const elapsedTime = Date.now() - state.startTime;
@@ -196,10 +203,23 @@ const preloaderModule: Module<PreloaderState, any> = {
           console.log(`📦 Cargando ${asset.type}: ${asset.name}`);
         }
 
+        // Timeout individual de 10 segundos por asset
+        const assetTimeout = setTimeout(() => {
+          const timeoutMsg = `⏰ Timeout cargando ${asset.type}: ${asset.name}`;
+          if (asset.critical) {
+            console.error(timeoutMsg);
+          } else {
+            console.warn(timeoutMsg);
+          }
+          commit('MARK_ASSET_LOADED', asset.src);
+          resolve(null);
+        }, 10000);
+
         if (asset.type === 'image') {
           const img = new Image();
           
           img.onload = () => {
+            clearTimeout(assetTimeout);
             if (preloaderConfig.debug) {
               console.log(`✅ Imagen cargada: ${asset.name}`);
             }
@@ -208,6 +228,7 @@ const preloaderModule: Module<PreloaderState, any> = {
           };
           
           img.onerror = () => {
+            clearTimeout(assetTimeout);
             const errorMsg = `❌ Error cargando imagen: ${asset.name}`;
             if (asset.critical) {
               console.error(errorMsg);
@@ -223,6 +244,7 @@ const preloaderModule: Module<PreloaderState, any> = {
           const video = document.createElement('video');
           
           video.addEventListener('canplaythrough', () => {
+            clearTimeout(assetTimeout);
             if (preloaderConfig.debug) {
               console.log(`✅ Video cargado: ${asset.name}`);
             }
@@ -231,6 +253,7 @@ const preloaderModule: Module<PreloaderState, any> = {
           });
           
           video.addEventListener('error', () => {
+            clearTimeout(assetTimeout);
             const errorMsg = `❌ Error cargando video: ${asset.name}`;
             if (asset.critical) {
               console.error(errorMsg);

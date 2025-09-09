@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Preloader />
+    <Preloader v-if="isLoading" />
     <div v-if="!isLoading" class="app-content">
       <AppHeader />
       <router-view />

@@ -6,9 +6,9 @@
       </router-link>
       <nav>
         <router-link to="/">Inicio</router-link>
-        <router-link to="/nosotros">Nosotros</router-link>
+        <router-link to="/nosotros">Nuestra empresa</router-link>
         <router-link to="/contacto">Contacto</router-link>
-        <router-link to="/cv">Subir CV</router-link>
+        <router-link to="/cv">Trabaja con nosotros</router-link>
       </nav>
     </div>
   </header>
@@ -32,9 +32,9 @@ export default defineComponent({
   top: 0;
   z-index: 50;
   backdrop-filter: blur(12px);
-  background: rgba(226, 232, 240, 0.7);
+  background: rgba(255, 255, 255, 0.9);
   color: rgb(5, 44, 89);
-  border-bottom: 1px solid rgba(203, 213, 225, 0.3);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
   transition: all 0.3s ease;
 }
 .container {
@@ -63,6 +63,8 @@ nav a {
   text-decoration: none;
   opacity: 0.8;
   transition: all 0.3s ease;
+  font-size: 18px;
+  font-weight: 500;
 }
 nav a.router-link-exact-active {
   opacity: 1;
@@ -72,8 +74,8 @@ nav a.router-link-exact-active {
 
 /* Efecto de transparencia dinámica */
 .app-header:hover {
-  background: rgba(226, 232, 240, 0.85);
-  border-bottom: 1px solid rgba(203, 213, 225, 0.6);
+  background: rgba(255, 255, 255, 0.95);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.6);
 }
 
 /* Efecto hover en enlaces */

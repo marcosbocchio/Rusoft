@@ -212,14 +212,14 @@ label {
 }
 
 .input-control:focus {
-  border-color: #2dd4bf;
-  background: #ffffff;
-  box-shadow: 0 0 0 3px rgba(45, 212, 191, 0.1);
+  border-color: #7dd3fc;
+  background: rgba(10, 14, 20, 0.8);
+  box-shadow: 0 0 0 3px rgba(125, 211, 252, 0.3);
   transform: translateY(-2px);
 }
 
 .input-control:hover {
-  border-color: rgba(45, 212, 191, 0.4);
+  border-color: rgba(125, 211, 252, 0.4);
 }
 
 .file-input {

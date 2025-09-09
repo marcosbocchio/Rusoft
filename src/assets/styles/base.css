@@ -1,7 +1,7 @@
 /* Tipografía y reset mínimo */
 :root {
   --bg1: url('../background1.png');
-  --bg2: url('../background2.png');
+  --bg2: url('../background3.jpeg');
   --bg3: url('../background1.png');
   --gradient: linear-gradient(180deg, rgba(10,14,20,0.4) 0%, rgba(10,14,20,0.2) 40%, rgba(10,14,20,0.4) 100%);
   --brand: #2dd4bf;

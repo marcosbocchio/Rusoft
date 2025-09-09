@@ -244,19 +244,19 @@ export default defineComponent({
 
     const clients = [
       {
-        name: "Vicente López",
+        name: "Municipalidad Vicente López",
         logo: require("@/assets/logos-clientes/logo-municipalidad_vicente-lopez.png"),
-        description: "Descripción del cliente Vicente López",
+        description: "Desarrollo de sistemas especializados y soporte técnico integral para la gestión de ingresos públicos, optimizando los procesos tributarios y mejorando la eficiencia en la recaudación municipal.",
       },
       {
         name: "Enod",
         logo: require("@/assets/logos-clientes/logo-enod-web.jpg"),
-        description: "Descripción del cliente Enod",
+        description: "Desarrollo de sistema integral de gestión de ensayos e informes técnicos, incluyendo módulos para carga de informes con técnicas de ensayo especializadas, gestión de partes diarios y certificados.",
       },
       {
         name: "Pastoriza",
         logo: require("@/assets/logos-clientes/logo-la-pastoriza.jpg"),
-        description: "Descripción del cliente Pastoriza",
+        description: "Desarrollo de sistema integrado de pesaje automático con balanza para camiones y plataforma de gestión de movimientos vehiculares, optimizando el control de carga, trazabilidad y operaciones logísticas en tiempo real.",
       },
       {
         name: "Corralón de Marco",
@@ -266,11 +266,11 @@ export default defineComponent({
       {
         name: "Pri Sports",
         logo: require("@/assets/logos-clientes/logo-pri-sports.jpg"),
-        description: "Descripción del cliente Pri Sports",
+        description: "Desarrollo de sistema integral de gestión de jugadores, incluyendo registro de datos personales, seguimiento de rendimiento deportivo, control de fichas médicas y administración completa del plantel deportivo.",
       },
       {
         name: "Sanitarios Álvarez",
-        logo: require("@/assets/logos-clientes/logo-sanitarios-alvarez.png"),
+        logo: require("@/assets/logos-clientes/logo-sanitarios-alvarez.jpg"),
         description: "Descripción del cliente Sanitarios Álvarez",
       },
       {

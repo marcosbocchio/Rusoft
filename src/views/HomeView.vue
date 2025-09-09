@@ -15,7 +15,7 @@
 
     <section class="section bg-alt">
       <div class="container">
-        <h2 style="margin-top: 0">{{ services.title }}</h2>
+        <h2 ref="servicesTitle" style="margin-top: 0">{{ services.title }}</h2>
         <div
           class="grid"
           style="
@@ -25,7 +25,15 @@
             margin-top: 16px;
           "
         >
-          <article v-for="s in services.items" :key="s.name" class="card">
+          <article 
+            v-for="(s, index) in services.items" 
+            :key="s.name" 
+            class="card service-card"
+            :class="{ 
+              'animate-service': isServicesVisible 
+            }"
+            :style="{ animationDelay: isServicesVisible ? `${index * 0.1}s` : '0s' }"
+          >
             <h3 style="margin-top: 0">{{ s.name }}</h3>
             <p style="opacity: 0.9">{{ s.summary }}</p>
           </article>
@@ -34,7 +42,7 @@
     </section>
 
     <!-- Sección de Tecnologías -->
-    <section class="section bg-alt">
+    <section class="section bg-tech">
       <div class="container">
         <h2 ref="techTitle" style="margin-top: 0; text-align: center; margin-bottom: 40px">
           Tecnologías que Dominamos
@@ -117,8 +125,10 @@ export default defineComponent({
     const services = content.pages.home.services;
     const isVisible = ref(false);
     const isTechVisible = ref(false);
+    const isServicesVisible = ref(false);
     const clientsTitle = ref<HTMLElement | null>(null);
     const techTitle = ref<HTMLElement | null>(null);
+    const servicesTitle = ref<HTMLElement | null>(null);
 
     const technologies = [
       {
@@ -266,8 +276,32 @@ export default defineComponent({
     // Intersection Observer para activar animaciones cuando las secciones sean visibles
     let clientsObserver: IntersectionObserver | null = null;
     let techObserver: IntersectionObserver | null = null;
+    let servicesObserver: IntersectionObserver | null = null;
 
     onMounted(() => {
+      // Observer para la sección de servicios
+      if (servicesTitle.value) {
+        servicesObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                isServicesVisible.value = true;
+                // Una vez que se activa, desconectamos el observer
+                if (servicesObserver) {
+                  servicesObserver.disconnect();
+                }
+              }
+            });
+          },
+          {
+            threshold: 0.1, // Se activa cuando el 10% del título es visible
+            rootMargin: '0px 0px 0px 0px' // Se activa ni bien aparece el título
+          }
+        );
+        
+        servicesObserver.observe(servicesTitle.value);
+      }
+
       // Observer para la sección de clientes
       if (clientsTitle.value) {
         clientsObserver = new IntersectionObserver(
@@ -322,9 +356,12 @@ export default defineComponent({
       if (techObserver) {
         techObserver.disconnect();
       }
+      if (servicesObserver) {
+        servicesObserver.disconnect();
+      }
     });
 
-    return { hero, services, technologies, clients, isVisible, isTechVisible, clientsTitle, techTitle };
+    return { hero, services, technologies, clients, isVisible, isTechVisible, isServicesVisible, clientsTitle, techTitle, servicesTitle };
   },
 });
 </script>
@@ -417,6 +454,28 @@ export default defineComponent({
   }
 }
 
+@keyframes slideInFromBottom {
+  from {
+    opacity: 0;
+    transform: translateY(50px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Cards de servicios */
+.service-card {
+  opacity: 0;
+  transform: translateY(50px) scale(0.9);
+  transition: all 0.3s ease;
+}
+
+.service-card.animate-service {
+  animation: slideInFromBottom 0.8s ease-out forwards;
+}
+
 /* Grid de tecnologías */
 .tech-grid {
   display: grid;
@@ -431,12 +490,14 @@ export default defineComponent({
   flex-direction: column;
   align-items: center;
   padding: 20px 16px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 12px;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   opacity: 0;
   transform: translateX(-80px) scale(0.8);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(8px);
 }
 
 .tech-item.animate-tech-left {
@@ -449,9 +510,9 @@ export default defineComponent({
 
 .tech-item:hover {
   transform: translateY(-4px) scale(1.05);
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(125, 211, 252, 0.3);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  background: rgba(255, 255, 255, 1);
+  border-color: #2dd4bf;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
 }
 
 .tech-icon {
@@ -461,7 +522,7 @@ export default defineComponent({
   align-items: center;
   justify-content: center;
   margin-bottom: 12px;
-  color: #7dd3fc;
+  color: #2dd4bf;
   transition: all 0.3s ease;
 }
 
@@ -475,13 +536,12 @@ export default defineComponent({
   font-weight: 600;
   text-align: center;
   margin: 0;
-  opacity: 0.9;
+  color: #374151;
   transition: all 0.3s ease;
 }
 
 .tech-item:hover .tech-name {
-  opacity: 1;
-  color: #7dd3fc;
+  color: #2dd4bf;
 }
 
 .clients-list {
@@ -492,14 +552,14 @@ export default defineComponent({
 .client-item {
   display: flex;
   align-items: center;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
   border-radius: 16px;
   padding: 32px;
   margin-bottom: 24px;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   opacity: 0;
-  backdrop-filter: blur(8px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .client-item.animate-left {
@@ -512,9 +572,9 @@ export default defineComponent({
 
 .client-item:hover {
   transform: translateX(8px) scale(1.02);
-  background: rgba(255, 255, 255, 0.12);
-  border-color: rgba(125, 211, 252, 0.3);
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+  background: #f8fafc;
+  border-color: #2dd4bf;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
 }
 
 .client-logo {
@@ -549,12 +609,12 @@ export default defineComponent({
   font-size: 1.5rem;
   font-weight: 700;
   margin: 0 0 8px 0;
-  color: #fff;
+  color: #374151;
   transition: all 0.3s ease;
 }
 
 .client-item:hover .client-name {
-  color: #7dd3fc;
+  color: #2dd4bf;
   transform: translateX(4px);
 }
 
@@ -562,17 +622,22 @@ export default defineComponent({
   font-size: 1rem;
   line-height: 1.6;
   margin: 0;
-  opacity: 0.8;
+  color: #6b7280;
   transition: all 0.3s ease;
 }
 
 .client-item:hover .client-description {
-  opacity: 1;
+  color: #374151;
   transform: translateX(4px);
 }
 
 .section h2 {
   animation: fadeInUp 0.8s ease-out;
+}
+
+.bg-tech h2 {
+  color: #ffffff;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 @media (max-width: 768px) {

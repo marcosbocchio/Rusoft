@@ -590,7 +590,7 @@ export default defineComponent({
   font-weight: 600;
   text-align: center;
   margin: 0;
-  color: #374151;
+  color: rgb(5, 44, 89);
   transition: all 0.3s ease;
 }
 
@@ -663,7 +663,7 @@ export default defineComponent({
   font-size: 1.5rem;
   font-weight: 700;
   margin: 0 0 8px 0;
-  color: #374151;
+  color: rgb(5, 44, 89);
   transition: all 0.3s ease;
 }
 

@@ -32,13 +32,13 @@ export default defineComponent({
   top: 0;
   z-index: 50;
   backdrop-filter: blur(12px);
-  background: rgba(226, 232, 240, 0.9);
-  color: #1e293b;
-  border-bottom: 1px solid rgba(203, 213, 225, 0.5);
+  background: rgba(226, 232, 240, 0.7);
+  color: rgb(5, 44, 89);
+  border-bottom: 1px solid rgba(203, 213, 225, 0.3);
   transition: all 0.3s ease;
 }
 .container {
-  max-width: 1100px;
+  max-width: 1540px;
   margin: 0 auto;
   padding: 8px 16px;
   display: flex;
@@ -59,7 +59,7 @@ export default defineComponent({
 }
 nav a {
   margin-left: 16px;
-  color: #1e293b;
+  color: rgb(5, 44, 89);
   text-decoration: none;
   opacity: 0.8;
   transition: all 0.3s ease;
@@ -72,8 +72,8 @@ nav a.router-link-exact-active {
 
 /* Efecto de transparencia dinámica */
 .app-header:hover {
-  background: rgba(226, 232, 240, 0.95);
-  border-bottom: 1px solid rgba(203, 213, 225, 0.8);
+  background: rgba(226, 232, 240, 0.85);
+  border-bottom: 1px solid rgba(203, 213, 225, 0.6);
 }
 
 /* Efecto hover en enlaces */

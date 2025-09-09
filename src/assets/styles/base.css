@@ -16,6 +16,17 @@ body {
   font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
 }
 
+/* Títulos globales */
+h1, h2, h3, h4, h5, h6 {
+  color: rgb(5, 44, 89);
+}
+
+/* Títulos en secciones con imágenes de fondo mantienen blanco */
+.bg-tech h1, .bg-tech h2, .bg-tech h3, .bg-tech h4, .bg-tech h5, .bg-tech h6,
+.hero-section h1, .hero-section h2, .hero-section h3, .hero-section h4, .hero-section h5, .hero-section h6 {
+  color: #ffffff;
+}
+
 /* Fondos utilitarios */
 .bg-hero { background: transparent; }
 .bg-alt { background: transparent; }

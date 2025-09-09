@@ -124,7 +124,7 @@
 
 <style scoped>
 .about-wrapper {
-  max-width: 980px;
+  max-width: 1540px;
   margin: 0 auto;
   padding: 32px 16px;
 }
@@ -136,6 +136,7 @@
 
 .about-hero h1 {
   margin: 0 0 6px 0;
+  color: rgb(5, 44, 89);
 }
 
 .about-media {
@@ -158,6 +159,7 @@
 .about-content h2 {
   margin-top: 18px;
   margin-bottom: 8px;
+  color: rgb(5, 44, 89);
 }
 
 .about-content p {
@@ -184,9 +186,12 @@
 
 .about-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(300px, 1fr));
   gap: 14px;
   margin: 14px 0 6px 0;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .about-card {
@@ -217,6 +222,7 @@
   }
   .about-grid {
     grid-template-columns: 1fr;
+    max-width: 100%;
   }
 }
 

@@ -197,8 +197,8 @@ label {
   margin-top: 14px;
   width: 100%;
   padding: 12px 16px;
-  background: linear-gradient(135deg, #22c55e, #16a34a);
-  color: #0b121a;
+  background: #495057;
+  color: #ffffff;
   border: none;
   border-radius: 10px;
   font-weight: 700;

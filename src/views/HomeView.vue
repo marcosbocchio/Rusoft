@@ -1,12 +1,15 @@
 <template>
   <main>
     <section class="hero-section">
+      <video class="hero-video" autoplay muted loop playsinline>
+        <source src="@/assets/video-fondo.mp4" type="video/mp4">
+      </video>
       <div class="hero-content">
         <div class="hero-text">
           <h1 class="hero-title">{{ hero.headline }}</h1>
           <p class="hero-subtitle">{{ hero.subheadline }}</p>
           <div class="hero-buttons">
-            <router-link to="/contacto" class="button-primary hero-btn">{{
+            <router-link to="/contacto" class="button-secondary hero-btn">{{
               hero.primary_cta.label
             }}</router-link>
             <a href="#servicios" class="button-secondary hero-btn">Nuestros Servicios</a>

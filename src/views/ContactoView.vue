@@ -128,6 +128,14 @@ export default defineComponent({
 
 .contact-header h1 {
   margin: 0 0 4px 0;
+  color: #ffffff;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.contact-header p {
+  color: #ffffff;
+  opacity: 0.9;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 .contact-form {
@@ -161,6 +169,7 @@ label {
   font-size: 14px;
   margin-top: 8px;
   margin-bottom: 6px;
+  color: #ffffff;
   opacity: 0.9;
 }
 
@@ -170,7 +179,7 @@ label {
   border-radius: 12px;
   border: 1px solid rgba(255, 255, 255, 0.4);
   background: rgba(10, 14, 20, 0.8);
-  color: #fff;
+  color: #ffffff;
   font-size: 16px;
   outline: none;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);

@@ -38,6 +38,20 @@
             }"
             :style="{ animationDelay: isServicesVisible ? `${index * 0.1}s` : '0s' }"
           >
+            <div class="service-icon">
+              <svg 
+                xmlns="http://www.w3.org/2000/svg" 
+                width="48" 
+                height="48" 
+                viewBox="0 0 24 24" 
+                fill="none" 
+                stroke="currentColor" 
+                stroke-width="2" 
+                stroke-linecap="round" 
+                stroke-linejoin="round"
+                v-html="getServiceIcon(s.name)"
+              ></svg>
+            </div>
             <h3 style="margin-top: 0">{{ s.name }}</h3>
             <p style="opacity: 0.9">{{ s.summary }}</p>
           </article>
@@ -133,6 +147,25 @@ export default defineComponent({
     const clientsTitle = ref<HTMLElement | null>(null);
     const techTitle = ref<HTMLElement | null>(null);
     const servicesTitle = ref<HTMLElement | null>(null);
+
+    // Función para obtener el icono de cada servicio
+    const getServiceIcon = (serviceName: string) => {
+      const icons: Record<string, string> = {
+        "Sistemas de Autogestión Tributaria": '<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14,2 14,8 20,8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10,9 9,9 8,9"></polyline>',
+        "Sistemas de Facturación Electrónica": '<rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line><path d="M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01M16 18h.01"></path>',
+        "Sistemas de Cuentas Corrientes": '<path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>',
+        "Sistemas de Control de Stock": '<path d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5 5M7 13l2.5 5m6-5v6a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2v-6"></path>',
+        "Gestión de Fiscalizaciones": '<path d="M9 12l2 2 4-4"></path><path d="M21 12c-1 0-3-1-3-3s2-3 3-3 3 1 3 3-2 3-3 3"></path><path d="M3 12c1 0 3-1 3-3s-2-3-3-3-3 1-3 3 2 3 3 3"></path><path d="M12 3c0 1-1 3-3 3s-3-2-3-3 1-3 3-3 3 2 3 3"></path><path d="M12 21c0-1 1-3 3-3s3 2 3 3-1 3-3 3-3-2-3-3"></path>',
+        "Soluciones de Inteligencia Artificial": '<path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1 .34-4.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z"></path><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0-.34-4.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z"></path>',
+        "Desarrollo de APIs y Microservicios": '<polyline points="16,18 22,12 16,6"></polyline><polyline points="8,6 2,12 8,18"></polyline>',
+        "Migración y Modernización de Sistemas": '<path d="M3 3h18v18H3zM12 8v8M8 12h8"></path><path d="M3 3l18 18M21 3L3 21"></path>',
+        "Consultoría en Transformación Digital": '<path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path><circle cx="12" cy="12" r="3"></circle>',
+        "Sistemas de Business Intelligence": '<path d="M3 3v18h18"></path><path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3"></path><circle cx="18" cy="6" r="3"></circle>',
+        "Desarrollo de Aplicaciones Móviles": '<rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line>',
+        "Auditoría y Optimización de Procesos": '<path d="M9 11H5a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7a2 2 0 0 0-2-2h-4"></path><rect x="9" y="7" width="6" height="4"></rect><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"></path>'
+      };
+      return icons[serviceName] || '<circle cx="12" cy="12" r="10"></circle><path d="M12 16V8M8 12h8"></path>';
+    };
 
     const technologies = [
       {
@@ -365,7 +398,7 @@ export default defineComponent({
       }
     });
 
-    return { hero, services, technologies, clients, isVisible, isTechVisible, isServicesVisible, clientsTitle, techTitle, servicesTitle };
+    return { hero, services, technologies, clients, isVisible, isTechVisible, isServicesVisible, clientsTitle, techTitle, servicesTitle, getServiceIcon };
   },
 });
 </script>
@@ -474,10 +507,27 @@ export default defineComponent({
   opacity: 0;
   transform: translateY(50px) scale(0.9);
   transition: all 0.3s ease;
+  text-align: center;
 }
 
 .service-card.animate-service {
   animation: slideInFromBottom 0.8s ease-out forwards;
+}
+
+.service-icon {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 20px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #3b82f6;
+  transition: all 0.3s ease;
+}
+
+.service-card:hover .service-icon {
+  color: #1d4ed8;
+  transform: scale(1.1);
 }
 
 /* Grid de tecnologías */
@@ -485,7 +535,7 @@ export default defineComponent({
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
   gap: 20px;
-  max-width: 1200px;
+  max-width: 1540px;
   margin: 0 auto;
 }
 
@@ -669,6 +719,12 @@ export default defineComponent({
     font-size: 12px;
   }
   
+  .service-icon {
+    width: 56px;
+    height: 56px;
+    margin-bottom: 16px;
+  }
+  
   .clients-list {
     margin: 24px 0 0;
   }
@@ -723,6 +779,12 @@ export default defineComponent({
   
   .tech-name {
     font-size: 11px;
+  }
+  
+  .service-icon {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 12px;
   }
   
   .hero-buttons {

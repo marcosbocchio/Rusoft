@@ -252,6 +252,10 @@
     padding: 60px 0;
   }
   
+  .empresa-container {
+    padding: 0 20px;
+  }
+  
   .empresa-content {
     gap: 60px;
   }
@@ -264,8 +268,29 @@
     font-size: 1rem;
   }
   
+  .section-title {
+    font-size: 1.3rem;
+  }
+  
+  .section-text {
+    font-size: 0.95rem;
+  }
+  
   .valores-grid {
     grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .valor-card {
+    padding: 20px;
+  }
+  
+  .valor-title {
+    font-size: 1rem;
+  }
+  
+  .valor-text {
+    font-size: 0.85rem;
   }
   
   .quote-section {
@@ -275,6 +300,134 @@
   
   .cierre-section {
     margin-top: 60px;
+  }
+  
+  .cierre-text {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .empresa-section {
+    padding: 40px 0;
+  }
+  
+  .empresa-container {
+    padding: 0 16px;
+  }
+  
+  .empresa-content {
+    gap: 40px;
+  }
+  
+  .intro-title {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+  
+  .intro-description {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+  
+  .section-title {
+    font-size: 1.2rem;
+    margin-bottom: 12px;
+  }
+  
+  .section-text {
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+  
+  .valores-title {
+    font-size: 1.3rem;
+    margin-bottom: 24px;
+  }
+  
+  .valores-grid {
+    gap: 16px;
+  }
+  
+  .valor-card {
+    padding: 16px;
+  }
+  
+  .valor-title {
+    font-size: 0.95rem;
+    margin-bottom: 6px;
+  }
+  
+  .valor-text {
+    font-size: 0.8rem;
+    line-height: 1.5;
+  }
+  
+  .quote-section {
+    padding: 20px;
+    font-size: 0.95rem;
+    margin: 0 16px;
+  }
+  
+  .cierre-section {
+    margin-top: 40px;
+  }
+  
+  .cierre-text {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+}
+
+@media (max-width: 360px) {
+  .empresa-container {
+    padding: 0 12px;
+  }
+  
+  .empresa-content {
+    gap: 32px;
+  }
+  
+  .intro-title {
+    font-size: 1.3rem;
+  }
+  
+  .intro-description {
+    font-size: 0.9rem;
+  }
+  
+  .section-title {
+    font-size: 1.1rem;
+  }
+  
+  .section-text {
+    font-size: 0.85rem;
+  }
+  
+  .valores-title {
+    font-size: 1.2rem;
+  }
+  
+  .valor-card {
+    padding: 14px;
+  }
+  
+  .valor-title {
+    font-size: 0.9rem;
+  }
+  
+  .valor-text {
+    font-size: 0.75rem;
+  }
+  
+  .quote-section {
+    padding: 16px;
+    font-size: 0.9rem;
+    margin: 0 12px;
+  }
+  
+  .cierre-text {
+    font-size: 0.9rem;
   }
 }
 </style>

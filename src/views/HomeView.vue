@@ -120,7 +120,7 @@
       <div class="container">
         <h2 ref="servicesTitle" style="margin-top: 0; text-align: center; margin-bottom: 40px">{{ services.title }}</h2>
         <div
-          class="grid"
+          class="grid services-grid"
           style="
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -232,19 +232,24 @@
           </article>
         </div>
 
-        <!-- Otros clientes (solo logos) -->
+        <!-- Otros clientes (carrusel) -->
         <h3 class="clients-subtitle">Más clientes</h3>
-        <div class="clients-logos-grid">
-          <div 
-            v-for="(client, index) in otherClients" 
-            :key="client.name" 
-            class="client-logo-item"
-            :class="{ 'animate-left': index % 2 === 0 && isVisible, 'animate-right': index % 2 === 1 && isVisible }"
-            :title="client.name"
-            :style="{ animationDelay: isVisible ? `${index * 0.05}s` : '0s' }"
-          >
-            <div class="client-logo-only">
-              <img :src="client.logo" :alt="`Logo de ${client.name}`" loading="lazy" />
+        <div class="clients-carousel-container">
+          <div class="clients-carousel" ref="carousel">
+            <div 
+              class="clients-carousel-track"
+              :style="{ transform: `translateX(-${currentPosition}px)` }"
+            >
+              <div 
+                v-for="(client, index) in infiniteClients" 
+                :key="`${client.name}-${index}`" 
+                class="client-logo-item"
+                :title="client.name"
+              >
+                <div class="client-logo-only">
+                  <img :src="client.logo" :alt="`Logo de ${client.name}`" loading="lazy" />
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -254,7 +259,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, onMounted, onUnmounted } from "vue";
+import { defineComponent, ref, computed, onMounted, onUnmounted } from "vue";
 import { content } from "@/content/site";
 
 export default defineComponent({
@@ -271,6 +276,14 @@ export default defineComponent({
     const techTitle = ref<HTMLElement | null>(null);
     const processTitle = ref<HTMLElement | null>(null);
     const servicesTitle = ref<HTMLElement | null>(null);
+    
+    // Carrusel de clientes
+    const carousel = ref<HTMLElement | null>(null);
+    const currentPosition = ref(0);
+    const itemWidth = ref(160); // Ancho de cada elemento
+    const gap = ref(16); // Espacio entre elementos
+    const autoPlayInterval = ref<number | null>(null);
+    const animationSpeed = ref(0.04); // Velocidad de animación en px por frame
 
     // Función para obtener el icono de cada servicio
     const getServiceIcon = (serviceName: string) => {
@@ -477,6 +490,57 @@ export default defineComponent({
 
     const featuredClients = clients.filter(c => featuredNames.includes(c.name));
     const otherClients = clients.filter(c => !featuredNames.includes(c.name));
+    
+    // Crear carrusel infinito con múltiples copias
+    const infiniteClients = [...otherClients, ...otherClients, ...otherClients];
+    
+    // Función para actualizar configuración del carrusel según el tamaño de pantalla
+    const updateCarouselConfig = () => {
+      const width = window.innerWidth;
+      if (width <= 480) {
+        itemWidth.value = 180;
+        gap.value = 12;
+        animationSpeed.value = 0.015;
+      } else if (width <= 768) {
+        itemWidth.value = 170;
+        gap.value = 14;
+        animationSpeed.value = 0.025;
+      } else {
+        itemWidth.value = 160;
+        gap.value = 16;
+        animationSpeed.value = 0.04;
+      }
+    };
+    
+    // Función para animar el carrusel de forma continua
+    const animateCarousel = () => {
+      const totalItemWidth = itemWidth.value + gap.value;
+      const resetPosition = otherClients.length * totalItemWidth;
+      
+      currentPosition.value += animationSpeed.value;
+      
+      // Reset cuando llega al final de la primera copia
+      if (currentPosition.value >= resetPosition) {
+        currentPosition.value = 0;
+      }
+      
+      requestAnimationFrame(animateCarousel);
+    };
+    
+    // Función para pausar la animación
+    const pauseAnimation = () => {
+      if (autoPlayInterval.value) {
+        clearInterval(autoPlayInterval.value);
+        autoPlayInterval.value = null;
+      }
+    };
+    
+    // Función para reanudar la animación
+    const resumeAnimation = () => {
+      if (!autoPlayInterval.value) {
+        autoPlayInterval.value = setInterval(animateCarousel, 16); // 60fps
+      }
+    };
 
     // Intersection Observer para activar animaciones cuando las secciones sean visibles
     let clientsObserver: IntersectionObserver | null = null;
@@ -485,6 +549,10 @@ export default defineComponent({
     let servicesObserver: IntersectionObserver | null = null;
 
     onMounted(() => {
+      // Configurar carrusel
+      updateCarouselConfig();
+      resumeAnimation();
+      
       // Observer para la sección de proceso
       if (processTitle.value) {
         processObserver = new IntersectionObserver(
@@ -590,6 +658,7 @@ export default defineComponent({
         servicesObserver.disconnect();
       }
       window.removeEventListener('scroll', handleScroll);
+      pauseAnimation();
     });
 
     // Control del video basado en scroll
@@ -598,7 +667,29 @@ export default defineComponent({
       isVideoFixed.value = scrollY < 100; // Solo fijo cuando estás cerca del top
     };
 
-    return { hero, services, technologies, clients, featuredClients, otherClients, isVisible, isTechVisible, isProcessVisible, isServicesVisible, isVideoFixed, clientsTitle, techTitle, processTitle, servicesTitle, getServiceIcon, handleScroll };
+    return { 
+      hero, 
+      services, 
+      technologies, 
+      clients, 
+      featuredClients, 
+      otherClients, 
+      infiniteClients,
+      isVisible, 
+      isTechVisible, 
+      isProcessVisible, 
+      isServicesVisible, 
+      isVideoFixed, 
+      clientsTitle, 
+      techTitle, 
+      processTitle, 
+      servicesTitle, 
+      getServiceIcon, 
+      handleScroll,
+      // Carrusel
+      carousel,
+      currentPosition
+    };
   },
 });
 </script>
@@ -994,14 +1085,34 @@ export default defineComponent({
   line-height: 1.5;
 }
 
-/* Otros clientes: solo logos */
-.clients-logos-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 16px;
+/* Carrusel de clientes */
+.clients-carousel-container {
+  position: relative;
+  margin-top: 24px;
+  max-width: 80%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.client-logo-item { display: flex; opacity: 0; }
+.clients-carousel {
+  overflow: hidden;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  padding: 16px;
+}
+
+.clients-carousel-track {
+  display: flex;
+  gap: 16px;
+  will-change: transform;
+}
+
+.client-logo-item { 
+  display: flex; 
+  flex-shrink: 0;
+  width: 160px;
+}
 
 .client-logo-only {
   background: #ffffff;
@@ -1010,15 +1121,15 @@ export default defineComponent({
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 16px 12px;
-  height: 120px;
+  padding: 12px 10px;
+  height: 100px;
   width: 100%;
   transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
 .client-logo-item:hover .client-logo-only {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
   border-color: #2dd4bf;
 }
 
@@ -1164,6 +1275,106 @@ export default defineComponent({
   .process-subtitle {
     text-align: center;
   }
+  
+  .process-svg {
+    max-width: 500px;
+  }
+}
+
+@media (max-width: 768px) {
+  .process-section {
+    padding: 60px 0;
+  }
+  
+  .process-container {
+    padding: 0 20px;
+  }
+  
+  .process-grid {
+    gap: 24px;
+  }
+  
+  .process-title {
+    font-size: 1.5rem;
+    margin-bottom: 16px;
+  }
+  
+  .process-subtitle {
+    font-size: 0.95rem;
+    margin-bottom: 24px;
+  }
+  
+  .process-steps-list {
+    gap: 20px;
+  }
+  
+  .process-step-item {
+    gap: 12px;
+  }
+  
+  .process-step-number {
+    width: 28px;
+    height: 28px;
+    font-size: 0.8rem;
+  }
+  
+  .process-step-title {
+    font-size: 1rem;
+    margin-bottom: 6px;
+  }
+  
+  .process-step-text {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+  
+  .process-svg {
+    max-width: 400px;
+  }
+}
+
+@media (max-width: 480px) {
+  .process-section {
+    padding: 40px 0;
+  }
+  
+  .process-container {
+    padding: 0 16px;
+  }
+  
+  .process-title {
+    font-size: 1.3rem;
+  }
+  
+  .process-subtitle {
+    font-size: 0.9rem;
+  }
+  
+  .process-steps-list {
+    gap: 16px;
+  }
+  
+  .process-step-item {
+    gap: 10px;
+  }
+  
+  .process-step-number {
+    width: 24px;
+    height: 24px;
+    font-size: 0.75rem;
+  }
+  
+  .process-step-title {
+    font-size: 0.95rem;
+  }
+  
+  .process-step-text {
+    font-size: 0.85rem;
+  }
+  
+  .process-svg {
+    max-width: 320px;
+  }
 }
 
 .client-logo-caption { margin: 0 4px; font-size: 0.95rem; font-weight: 600; color: rgb(5, 44, 89); line-height: 1.3; text-align: center; }
@@ -1178,6 +1389,31 @@ export default defineComponent({
 }
 
 @media (max-width: 768px) {
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px !important;
+  }
+  
+  .service-card {
+    padding: 16px;
+  }
+  
+  .service-card h3 {
+    font-size: 1rem;
+    margin-bottom: 8px;
+  }
+  
+  .service-card p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+  
+  .service-icon {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 12px;
+  }
+  
   .clients-featured-grid {
     grid-template-columns: 1fr;
     gap: 16px;
@@ -1215,12 +1451,6 @@ export default defineComponent({
   
   .tech-name {
     font-size: 12px;
-  }
-  
-  .service-icon {
-    width: 56px;
-    height: 56px;
-    margin-bottom: 16px;
   }
   
   .clients-list {
@@ -1261,6 +1491,29 @@ export default defineComponent({
 }
 
 @media (max-width: 480px) {
+  .services-grid {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+  
+  .service-card {
+    padding: 14px;
+  }
+  
+  .service-card h3 {
+    font-size: 0.95rem;
+  }
+  
+  .service-card p {
+    font-size: 0.85rem;
+  }
+  
+  .service-icon {
+    width: 44px;
+    height: 44px;
+    margin-bottom: 10px;
+  }
+  
   .tech-grid {
     grid-template-columns: repeat(3, 1fr);
     gap: 12px;
@@ -1279,10 +1532,42 @@ export default defineComponent({
     font-size: 11px;
   }
   
-  .service-icon {
-    width: 48px;
-    height: 48px;
-    margin-bottom: 12px;
+  .clients-featured-grid {
+    gap: 12px;
+  }
+  
+  .client-featured-card {
+    padding: 16px;
+  }
+  
+  .client-featured-logo {
+    width: 120px;
+    height: 90px;
+  }
+  
+  .client-featured-name {
+    font-size: 1.1rem;
+  }
+  
+  .cf-text {
+    font-size: 0.85rem;
+  }
+  
+  .clients-carousel-container {
+    max-width: 85%;
+  }
+  
+  .clients-carousel {
+    padding: 14px;
+  }
+  
+  .client-logo-item {
+    width: 170px;
+  }
+  
+  .client-logo-only {
+    height: 90px;
+    padding: 10px 8px;
   }
   
   .hero-buttons {
@@ -1293,6 +1578,81 @@ export default defineComponent({
   .hero-btn {
     width: 100%;
     max-width: 280px;
+  }
+}
+
+@media (max-width: 360px) {
+  .services-grid {
+    gap: 8px !important;
+  }
+  
+  .service-card {
+    padding: 12px;
+  }
+  
+  .service-card h3 {
+    font-size: 0.9rem;
+  }
+  
+  .service-card p {
+    font-size: 0.8rem;
+  }
+  
+  .service-icon {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .tech-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  
+  .tech-item {
+    padding: 10px 6px;
+  }
+  
+  .tech-icon {
+    width: 28px;
+    height: 28px;
+  }
+  
+  .tech-name {
+    font-size: 10px;
+  }
+  
+  .client-featured-card {
+    padding: 12px;
+  }
+  
+  .client-featured-logo {
+    width: 100px;
+    height: 80px;
+  }
+  
+  .client-featured-name {
+    font-size: 1rem;
+  }
+  
+  .cf-text {
+    font-size: 0.8rem;
+  }
+  
+  .clients-carousel-container {
+    max-width: 90%;
+  }
+  
+  .clients-carousel {
+    padding: 12px;
+  }
+  
+  .client-logo-item {
+    width: 180px;
+  }
+  
+  .client-logo-only {
+    height: 80px;
+    padding: 8px 6px;
   }
 }
 

@@ -2,7 +2,7 @@
   <main>
     <section class="hero-section">
       <video class="hero-video" :class="{ 'video-fixed': isVideoFixed }" autoplay muted loop playsinline>
-        <source src="@/assets/video-fondo.mp4" type="video/mp4">
+        <source src="@/assets/video-fondo3.mp4" type="video/mp4">
       </video>
       <div class="hero-content">
         <div class="hero-text">
@@ -19,6 +19,80 @@
       <div class="hero-overlay"></div>
     </section>
 
+
+    <!-- Sección: Nuestro Proceso (estilo referencia) -->
+    <section class="section process-section">
+      <div class="process-wrapper">
+        <div class="process-header">
+          <h2 class="process-header-title">Nuestro Proceso de Desarrollo</h2>
+          <p class="process-header-subtitle">Metodología probada para entregar soluciones de software excepcionales</p>
+        </div>
+
+        <div class="process-content">
+          <div class="process-steps">
+            <div class="step">
+              <div class="step-number">1</div>
+              <div class="step-content">
+                <h3 class="step-title">Relevamiento y Análisis</h3>
+                <p class="step-description">Realizamos un análisis exhaustivo de tus necesidades, objetivos del negocio y requerimientos técnicos. Documentamos cada funcionalidad y establecemos el alcance del proyecto.</p>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="step-number">2</div>
+              <div class="step-content">
+                <h3 class="step-title">Planificación y Diseño</h3>
+                <p class="step-description">Creamos la arquitectura del sistema, diseñamos la experiencia de usuario (UX/UI) y planificamos los sprints de desarrollo. Definimos tecnologías y metodologías a utilizar.</p>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="step-number">3</div>
+              <div class="step-content">
+                <h3 class="step-title">Desarrollo Ágil</h3>
+                <p class="step-description">Implementamos el software siguiendo metodologías ágiles, con entregas incrementales y feedback continuo. Mantenemos comunicación constante durante todo el proceso.</p>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="step-number">4</div>
+              <div class="step-content">
+                <h3 class="step-title">Testing y QA</h3>
+                <p class="step-description">Ejecutamos pruebas exhaustivas: unitarias, de integración, funcionales y de rendimiento. Garantizamos la calidad y estabilidad del software antes de la entrega.</p>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="step-number">5</div>
+              <div class="step-content">
+                <h3 class="step-title">Implementación</h3>
+                <p class="step-description">Desplegamos el software en el ambiente de producción, configuramos servidores y realizamos la migración de datos si es necesario. Capacitamos a tu equipo.</p>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="step-number">6</div>
+              <div class="step-content">
+                <h3 class="step-title">Soporte y Mantenimiento</h3>
+                <p class="step-description">Brindamos soporte técnico continuo, actualizaciones de seguridad, mejoras de rendimiento y nuevas funcionalidades según evolucionen tus necesidades.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="visual-section">
+            <div class="process-visual">
+              <div class="gear gear-1"></div>
+              <div class="gear gear-2"></div>
+              <div class="gear gear-3"></div>
+              <div class="gear gear-4"></div>
+              <div class="flow-line line-1"></div>
+              <div class="flow-line line-2"></div>
+              <div class="central-icon">⚙️</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <section id="servicios" class="section bg-alt servicios-clave-bg">
       <div class="container">
@@ -142,12 +216,14 @@
           <div 
             v-for="(client, index) in otherClients" 
             :key="client.name" 
-            class="client-logo-only"
+            class="client-logo-item"
             :class="{ 'animate-left': index % 2 === 0 && isVisible, 'animate-right': index % 2 === 1 && isVisible }"
             :title="client.name"
             :style="{ animationDelay: isVisible ? `${index * 0.05}s` : '0s' }"
           >
-            <img :src="client.logo" :alt="`Logo de ${client.name}`" loading="lazy" />
+            <div class="client-logo-only">
+              <img :src="client.logo" :alt="`Logo de ${client.name}`" loading="lazy" />
+            </div>
           </div>
         </div>
       </div>
@@ -166,10 +242,12 @@ export default defineComponent({
     const services = content.pages.home.services;
     const isVisible = ref(false);
     const isTechVisible = ref(false);
+    const isProcessVisible = ref(false);
     const isServicesVisible = ref(false);
     const isVideoFixed = ref(true);
     const clientsTitle = ref<HTMLElement | null>(null);
     const techTitle = ref<HTMLElement | null>(null);
+    const processTitle = ref<HTMLElement | null>(null);
     const servicesTitle = ref<HTMLElement | null>(null);
 
     // Función para obtener el icono de cada servicio
@@ -297,7 +375,7 @@ export default defineComponent({
         ]
       },
       {
-        name: "Pastoriza",
+        name: "La Pastoriza",
         logo: require("@/assets/logos-clientes/logo-la-pastoriza.jpg"),
         description: "Desarrollo de sistema integrado de pesaje automático con balanza para camiones y plataforma de gestión de movimientos vehiculares, optimizando el control de carga, trazabilidad y operaciones logísticas en tiempo real.",
         highlights: [
@@ -327,12 +405,12 @@ export default defineComponent({
         description: "Desarrollo de sistema integral de gestión de jugadores, incluyendo registro de datos personales, seguimiento de rendimiento deportivo, control de fichas médicas y administración completa del plantel deportivo.",
       },
       {
-        name: "Sanitarios Álvarez",
+        name: "ARZ E HIJOS",
         logo: require("@/assets/logos-clientes/logo-sanitarios-alvarez.jpg"),
         description: "Descripción del cliente Sanitarios Álvarez",
       },
       {
-        name: "Kanauf",
+        name: "De Marco contrucción en seco",
         logo: require("@/assets/logos-clientes/logo-kanauf.png"),
         description: "Descripción del cliente Kanauf",
       },
@@ -342,9 +420,9 @@ export default defineComponent({
         description: "Descripción del cliente La Noria",
       },
       {
-        name: "Revestimiento Magimundo",
+        name: "Magimundo",
         logo: require("@/assets/logos-clientes/logo_magimundo_color.png"),
-        description: "Descripción del cliente Revestimiento Magimundo",
+        description: "Descripción del cliente Magimundo",
       },
       {
         name: "Aberturas 3 de Febrero",
@@ -371,7 +449,7 @@ export default defineComponent({
     const featuredNames = [
       "Municipalidad Vicente López",
       "Enod",
-      "Pastoriza",
+      "La Pastoriza",
       "Corralón de Marco"
     ];
 
@@ -381,9 +459,29 @@ export default defineComponent({
     // Intersection Observer para activar animaciones cuando las secciones sean visibles
     let clientsObserver: IntersectionObserver | null = null;
     let techObserver: IntersectionObserver | null = null;
+    let processObserver: IntersectionObserver | null = null;
     let servicesObserver: IntersectionObserver | null = null;
 
     onMounted(() => {
+      // Observer para la sección de proceso
+      if (processTitle.value) {
+        processObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                isProcessVisible.value = true;
+                if (processObserver) processObserver.disconnect();
+              }
+            });
+          },
+          {
+            threshold: 0.1,
+            rootMargin: '0px 0px 0px 0px'
+          }
+        );
+        processObserver.observe(processTitle.value);
+      }
+
       // Observer para la sección de servicios
       if (servicesTitle.value) {
         servicesObserver = new IntersectionObserver(
@@ -463,6 +561,9 @@ export default defineComponent({
       if (techObserver) {
         techObserver.disconnect();
       }
+      if (processObserver) {
+        processObserver.disconnect();
+      }
       if (servicesObserver) {
         servicesObserver.disconnect();
       }
@@ -475,7 +576,7 @@ export default defineComponent({
       isVideoFixed.value = scrollY < 100; // Solo fijo cuando estás cerca del top
     };
 
-    return { hero, services, technologies, clients, featuredClients, otherClients, isVisible, isTechVisible, isServicesVisible, isVideoFixed, clientsTitle, techTitle, servicesTitle, getServiceIcon, handleScroll };
+    return { hero, services, technologies, clients, featuredClients, otherClients, isVisible, isTechVisible, isProcessVisible, isServicesVisible, isVideoFixed, clientsTitle, techTitle, processTitle, servicesTitle, getServiceIcon, handleScroll };
   },
 });
 </script>
@@ -878,22 +979,22 @@ export default defineComponent({
   gap: 16px;
 }
 
+.client-logo-item { display: flex; opacity: 0; }
+
 .client-logo-only {
   background: #ffffff;
   border: 1px solid #e5e7eb;
   border-radius: 12px;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 16px 12px;
-  height: 140px;
-  gap: 8px;
-  opacity: 0;
+  height: 120px;
+  width: 100%;
   transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
-.client-logo-only:hover {
+.client-logo-item:hover .client-logo-only {
   transform: translateY(-3px);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
   border-color: #2dd4bf;
@@ -903,6 +1004,7 @@ export default defineComponent({
   max-width: 90%;
   max-height: 80%;
   object-fit: contain;
+  display: block;
 }
 
 .clients-subtitle {
@@ -914,14 +1016,121 @@ export default defineComponent({
   opacity: 0.9;
 }
 
-.client-logo-name {
-  margin: 0;
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: rgb(5, 44, 89);
-  text-align: center;
-  line-height: 1.2;
+/* Nuestro Proceso */
+.process-section {
+  padding-top: 40px;
+  padding-bottom: 10px;
 }
+
+.process-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 24px;
+}
+
+.process-title {
+  margin: 0 0 8px 0;
+  text-align: left;
+}
+
+.process-subtitle {
+  margin: 0 0 18px 0;
+  color: #4b5563;
+}
+
+.process-timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0 8px;
+  position: relative;
+}
+
+.process-timeline::before {
+  content: '';
+  position: absolute;
+  left: 8px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: rgba(59, 130, 246, 0.25);
+}
+
+.process-item {
+  display: grid;
+  grid-template-columns: 30px 1fr;
+  column-gap: 12px;
+  padding: 8px 0 16px 0;
+  opacity: 0;
+  animation: slideInFromLeft 0.8s ease-out forwards;
+}
+
+.process-icon {
+  width: 24px;
+  height: 24px;
+  background: #e0f2fe;
+  border: 2px solid #93c5fd;
+  color: #0ea5e9;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.process-content h4 {
+  margin: 0 0 6px 0;
+  color: rgb(5, 44, 89);
+}
+
+.process-content p {
+  margin: 0;
+  color: #4b5563;
+  line-height: 1.6;
+}
+
+.process-right {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.process-panel {
+  width: 100%;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.process-media {
+  width: 100%;
+  max-width: 520px;
+  background: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.process-media img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+@media (max-width: 900px) {
+  .process-grid {
+    grid-template-columns: 1fr;
+  }
+  .process-title {
+    text-align: center;
+  }
+  .process-subtitle {
+    text-align: center;
+  }
+}
+
+.client-logo-caption { margin: 0 4px; font-size: 0.95rem; font-weight: 600; color: rgb(5, 44, 89); line-height: 1.3; text-align: center; }
 
 .section h2 {
   animation: fadeInUp 0.8s ease-out;
@@ -1049,6 +1258,133 @@ export default defineComponent({
     width: 100%;
     max-width: 280px;
   }
+}
+
+/* === Nuestro Proceso (estilo de referencia) === */
+.process-section {
+  padding: 40px 0;
+  background: transparent;
+}
+
+.process-wrapper {
+  max-width: 1540px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  overflow: hidden;
+}
+
+.process-header {
+  background: linear-gradient(135deg, rgba(44,62,80,0.5), rgba(52,152,219,0.5));
+  color: #ffffff;
+  padding: 60px 40px;
+  text-align: center;
+  position: relative;
+}
+
+.process-header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M30 30c0-11.046-8.954-20-20-20s-20 8.954-20 20 8.954 20 20 20 20-8.954 20-20zm0-20c11.046 0 20-8.954 20-20s-8.954-20-20-20-20 8.954-20 20 8.954 20 20 20z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") repeat;
+  opacity: 0.04;
+}
+
+.process-header-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin: 0 0 12px 0;
+  position: relative;
+  z-index: 1;
+}
+
+.process-header-subtitle {
+  font-size: 1.15rem;
+  opacity: 0.95;
+  position: relative;
+  z-index: 1;
+}
+
+.process-content {
+  display: flex;
+  align-items: flex-start;
+  gap: 60px;
+  padding: 60px 40px;
+}
+
+.process-steps { flex: 1; }
+
+.step {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 40px;
+  padding: 30px;
+  background: #f8f9fa;
+  border-radius: 15px;
+  border-left: 5px solid #3498db;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.step::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(52,152,219,0.05), rgba(155,89,182,0.05));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.step:hover::before { opacity: 1; }
+.step:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
+
+.step-number {
+  background: linear-gradient(135deg, #3498db, #9b59b6);
+  color: #ffffff;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.4rem;
+  margin-right: 25px;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.step-title { font-size: 1.5rem; font-weight: 600; color: #2c3e50; margin: 0 0 10px 0; }
+.step-description { color: #5a6c7d; font-size: 1.1rem; line-height: 1.7; margin: 0; }
+
+.visual-section { flex: 0 0 400px; display: flex; align-items: center; justify-content: center; }
+.process-visual { width: 100%; height: 600px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 20px; position: relative; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.2); }
+
+/* Animaciones y elementos visuales */
+.gear { position: absolute; border-radius: 50%; background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border: 2px solid rgba(255,255,255,0.2); }
+.gear-1 { width: 120px; height: 120px; top: 80px; left: 60px; animation: process-rotate 10s linear infinite; }
+.gear-2 { width: 80px; height: 80px; top: 180px; right: 80px; animation: process-rotate 8s linear infinite reverse; }
+.gear-3 { width: 100px; height: 100px; bottom: 120px; left: 80px; animation: process-rotate 12s linear infinite; }
+.gear-4 { width: 60px; height: 60px; bottom: 180px; right: 60px; animation: process-rotate 6s linear infinite reverse; }
+.flow-line { position: absolute; background: rgba(255,255,255,0.3); border-radius: 2px; }
+.line-1 { width: 2px; height: 200px; top: 120px; left: 50%; transform: translateX(-50%); animation: process-pulse 2s ease-in-out infinite; }
+.line-2 { width: 150px; height: 2px; top: 50%; left: 50%; transform: translate(-50%, -50%); animation: process-pulse 2s ease-in-out infinite 0.5s; }
+.central-icon { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 80px; height: 80px; background: rgba(255,255,255,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2em; color: #ffffff; backdrop-filter: blur(10px); border: 2px solid rgba(255,255,255,0.3); animation: process-float 3s ease-in-out infinite; }
+
+@keyframes process-rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+@keyframes process-pulse { 0%,100% { opacity: .3; } 50% { opacity: .8; } }
+@keyframes process-float { 0%,100% { transform: translate(-50%, -50%) translateY(0); } 50% { transform: translate(-50%, -50%) translateY(-10px); } }
+
+@media (max-width: 900px) {
+  .process-content { flex-direction: column; gap: 40px; padding: 40px 24px; }
+  .visual-section { flex: none; }
+  .process-visual { height: 400px; }
+  .process-header-title { font-size: 2rem; }
+  .step { padding: 20px; }
 }
 </style>
 <style scoped>

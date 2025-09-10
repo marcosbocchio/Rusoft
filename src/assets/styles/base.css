@@ -96,7 +96,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .hero-subtitle {
-  font-size: clamp(1.2rem, 3vw, 1.8rem);
+  font-size: clamp(1.1rem, 2.6vw, 1.6rem);
   font-weight: 400;
   margin: 0 0 40px 0;
   color: #ffffff;

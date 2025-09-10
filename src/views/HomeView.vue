@@ -22,7 +22,7 @@
 
     <section id="servicios" class="section bg-alt servicios-clave-bg">
       <div class="container">
-        <h2 ref="servicesTitle" style="margin-top: 0">{{ services.title }}</h2>
+        <h2 ref="servicesTitle" style="margin-top: 0; text-align: center; margin-bottom: 40px">{{ services.title }}</h2>
         <div
           class="grid"
           style="
@@ -104,30 +104,50 @@
         <h2 ref="clientsTitle" style="margin-top: 0; text-align: center; margin-bottom: 40px">
           Nuestros Clientes
         </h2>
-        <div class="clients-list" ref="clientsSection">
-          <div 
-            v-for="(client, index) in clients" 
+
+        <!-- Clientes destacados -->
+        <div class="clients-featured-grid" ref="clientsSection">
+          <article 
+            v-for="(client, index) in featuredClients" 
             :key="client.name" 
-            class="client-item"
-            :class="{ 
-              'animate-left': index % 2 === 0 && isVisible, 
-              'animate-right': index % 2 === 1 && isVisible 
-            }"
-            :style="{ animationDelay: isVisible ? `${index * 0.2}s` : '0s' }"
+            class="client-featured-card"
+            :class="{ 'animate-left': index % 2 === 0 && isVisible, 'animate-right': index % 2 === 1 && isVisible }"
+            :style="{ animationDelay: isVisible ? `${index * 0.15}s` : '0s' }"
           >
-            <div class="client-logo">
-              <img
-                :src="client.logo"
-                :alt="`Logo de ${client.name}`"
-                loading="lazy"
-              />
+            <div class="client-featured-logo">
+              <img :src="client.logo" :alt="`Logo de ${client.name}`" loading="lazy" />
             </div>
-            <div class="client-info">
-              <h3 class="client-name">{{ client.name }}</h3>
-              <p class="client-description">
-                {{ client.description }}
-              </p>
+            <div class="client-featured-info">
+              <h3 class="client-featured-name">{{ client.name }}</h3>
+              <template v-if="client.highlights && client.highlights.length">
+                <ul class="client-featured-list">
+                  <li v-for="(point, i) in client.highlights" :key="i" class="cf-item">
+                    <span class="cf-icon" aria-hidden="true">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 6L9 17l-5-5"></path>
+                      </svg>
+                    </span>
+                    <span class="cf-text">{{ point }}</span>
+                  </li>
+                </ul>
+              </template>
+              <p v-else class="client-featured-description">{{ client.description }}</p>
             </div>
+          </article>
+        </div>
+
+        <!-- Otros clientes (solo logos) -->
+        <h3 class="clients-subtitle">Más clientes</h3>
+        <div class="clients-logos-grid">
+          <div 
+            v-for="(client, index) in otherClients" 
+            :key="client.name" 
+            class="client-logo-only"
+            :class="{ 'animate-left': index % 2 === 0 && isVisible, 'animate-right': index % 2 === 1 && isVisible }"
+            :title="client.name"
+            :style="{ animationDelay: isVisible ? `${index * 0.05}s` : '0s' }"
+          >
+            <img :src="client.logo" :alt="`Logo de ${client.name}`" loading="lazy" />
           </div>
         </div>
       </div>
@@ -251,21 +271,55 @@ export default defineComponent({
         name: "Municipalidad Vicente López",
         logo: require("@/assets/logos-clientes/logo-municipalidad_vicente-lopez.png"),
         description: "Desarrollo de sistemas especializados y soporte técnico integral para la gestión de ingresos públicos, optimizando los procesos tributarios y mejorando la eficiencia en la recaudación municipal.",
+        highlights: [
+          "Sistema de autogestión tributaria para contribuyentes",
+          "Módulos de fiscalización y gestión de deudas",
+          "Tableros de seguimiento y reportes de recaudación",
+          "App móvil para contribuyentes",
+          "Plataforma integral de gestión de trámites digitales (workflow, notificaciones, seguimiento)",
+          "Backoffice operativo con roles, auditoría y reportes",
+          "Mesa de ayuda, monitoreo y mantenimiento evolutivo"
+        ]
       },
       {
         name: "Enod",
         logo: require("@/assets/logos-clientes/logo-enod-web.jpg"),
         description: "Desarrollo de sistema integral de gestión de ensayos e informes técnicos, incluyendo módulos para carga de informes con técnicas de ensayo especializadas, gestión de partes diarios y certificados.",
+        highlights: [
+          "Trazabilidad completa de ensayos e informes técnicos",
+          "Gestión de partes diarios y emisión de certificados",
+          "Workflow de aprobación y auditoría",
+          "Gestión de inventario y control de stock en tiempo real",
+          "Control de asistencia con validaciones y reportes",
+          "Alertas automáticas y notificaciones operativas",
+          "Operación offline con sincronización automática",
+          "Soporte técnico continuo"
+        ]
       },
       {
         name: "Pastoriza",
         logo: require("@/assets/logos-clientes/logo-la-pastoriza.jpg"),
         description: "Desarrollo de sistema integrado de pesaje automático con balanza para camiones y plataforma de gestión de movimientos vehiculares, optimizando el control de carga, trazabilidad y operaciones logísticas en tiempo real.",
+        highlights: [
+          "Pesaje automático integrado con balanza de camiones",
+          "Gestión y trazabilidad de movimientos vehiculares",
+          "Alertas por desvíos de peso y anomalías",
+          "Reportes operativos en tiempo real"
+        ]
       },
       {
         name: "Corralón de Marco",
         logo: require("@/assets/logos-clientes/logo_de-marco-corralon.png"),
         description: "Descripción del cliente Corralón de Marco",
+        highlights: [
+          "Gestión de stock y cuentas corrientes",
+          "Facturación electrónica y control de ventas",
+          "Indicadores de compras y rotación",
+          "Precios por lista y políticas de descuentos",
+          "Control de remitos y trazabilidad de entregas",
+          "Integración con AFIP para emisión y validación",
+          "Soporte técnico continuo"
+        ]
       },
       {
         name: "Pri Sports",
@@ -313,6 +367,16 @@ export default defineComponent({
         description: "Descripción del cliente Pinturería San Andrés",
       },
     ];
+
+    const featuredNames = [
+      "Municipalidad Vicente López",
+      "Enod",
+      "Pastoriza",
+      "Corralón de Marco"
+    ];
+
+    const featuredClients = clients.filter(c => featuredNames.includes(c.name));
+    const otherClients = clients.filter(c => !featuredNames.includes(c.name));
 
     // Intersection Observer para activar animaciones cuando las secciones sean visibles
     let clientsObserver: IntersectionObserver | null = null;
@@ -411,7 +475,7 @@ export default defineComponent({
       isVideoFixed.value = scrollY < 100; // Solo fijo cuando estás cerca del top
     };
 
-    return { hero, services, technologies, clients, isVisible, isTechVisible, isServicesVisible, isVideoFixed, clientsTitle, techTitle, servicesTitle, getServiceIcon, handleScroll };
+    return { hero, services, technologies, clients, featuredClients, otherClients, isVisible, isTechVisible, isServicesVisible, isVideoFixed, clientsTitle, techTitle, servicesTitle, getServiceIcon, handleScroll };
   },
 });
 </script>
@@ -519,12 +583,21 @@ export default defineComponent({
 .service-card {
   opacity: 0;
   transform: translateY(50px) scale(0.9);
-  transition: all 0.3s ease;
+  transition: transform 0.8s ease, box-shadow 0.8s ease;
   text-align: center;
 }
 
 .service-card.animate-service {
   animation: slideInFromBottom 0.8s ease-out forwards;
+}
+
+/* Efecto zoom sutil al hacer hover */
+.service-card:hover {
+  transform: translateY(-8px) scale(1.06) !important;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.18);
+  will-change: transform, box-shadow;
+  cursor: pointer;
+  z-index: 1;
 }
 
 .service-icon {
@@ -560,7 +633,7 @@ export default defineComponent({
   background: rgba(255, 255, 255, 0.4);
   border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 12px;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.8s cubic-bezier(0.4, 0, 0.2, 1), background 0.8s ease, border-color 0.8s ease;
   opacity: 0;
   transform: translateX(-80px) scale(0.8);
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
@@ -576,10 +649,13 @@ export default defineComponent({
 }
 
 .tech-item:hover {
-  transform: translateY(-4px) scale(1.05);
+  transform: translateY(-8px) scale(1.08) !important;
   background: rgba(255, 255, 255, 0.6);
   border-color: #2dd4bf;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.28);
+  will-change: transform, box-shadow;
+  cursor: pointer;
+  z-index: 1;
 }
 
 .tech-icon {
@@ -608,7 +684,7 @@ export default defineComponent({
 }
 
 .tech-item:hover .tech-name {
-  color: #2dd4bf;
+  color: inherit;
 }
 
 .clients-list {
@@ -634,6 +710,15 @@ export default defineComponent({
 }
 
 .client-item.animate-right {
+  animation: slideInFromRight 0.8s ease-out forwards;
+}
+
+/* Animaciones genéricas para cualquier elemento */
+.animate-left {
+  animation: slideInFromLeft 0.8s ease-out forwards;
+}
+
+.animate-right {
   animation: slideInFromRight 0.8s ease-out forwards;
 }
 
@@ -698,6 +783,146 @@ export default defineComponent({
   transform: translateX(4px);
 }
 
+/* Clientes destacados */
+.clients-featured-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(280px, 1fr));
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.client-featured-card {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  align-items: start;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  padding: 24px;
+  opacity: 0;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.client-featured-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.15);
+  border-color: #2dd4bf;
+}
+
+.client-featured-logo {
+  width: 160px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  align-self: start;
+}
+
+.client-featured-logo img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.client-featured-info {
+  padding-left: 16px;
+}
+
+.client-featured-name {
+  margin: 0 0 8px 0;
+  font-size: 1.25rem;
+  color: rgb(5, 44, 89);
+}
+
+.client-featured-description {
+  margin: 0;
+  color: #4b5563;
+  line-height: 1.6;
+}
+
+/* Lista con íconos para destacados */
+.client-featured-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+}
+
+.cf-item {
+  display: grid;
+  grid-template-columns: 22px 1fr;
+  align-items: start;
+  column-gap: 8px;
+  color: #374151;
+}
+
+.cf-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #10b981;
+}
+
+.cf-text {
+  line-height: 1.5;
+}
+
+/* Otros clientes: solo logos */
+.clients-logos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 16px;
+}
+
+.client-logo-only {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 12px;
+  height: 140px;
+  gap: 8px;
+  opacity: 0;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.client-logo-only:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  border-color: #2dd4bf;
+}
+
+.client-logo-only img {
+  max-width: 90%;
+  max-height: 80%;
+  object-fit: contain;
+}
+
+.clients-subtitle {
+  margin: 8px 0 16px 0;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #374151;
+  opacity: 0.9;
+}
+
+.client-logo-name {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: rgb(5, 44, 89);
+  text-align: center;
+  line-height: 1.2;
+}
+
 .section h2 {
   animation: fadeInUp 0.8s ease-out;
 }
@@ -708,6 +933,21 @@ export default defineComponent({
 }
 
 @media (max-width: 768px) {
+  .clients-featured-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .client-featured-card {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .client-featured-info {
+    padding-left: 0;
+    margin-top: 12px;
+  }
+
   .tech-grid {
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
     gap: 16px;

@@ -74,7 +74,7 @@ export const content: SiteContent = {
         ],
       },
       services: {
-        title: "Servicios Clave",
+        title: "Que hacemos",
         items: [
           {
             name: "Sistemas de Autogestión Tributaria",

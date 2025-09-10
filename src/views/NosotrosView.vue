@@ -1,333 +1,280 @@
 <template>
-  <section class="section nosotros-bg">
-    <div class="about-wrapper">
-      <header class="about-hero animate-header">
-        <h1>Nuestra Empresa</h1>
-        <p class="animate-content">
-          En Rusoft creemos que la tecnología debe ser un habilitador real del
-          negocio. Diseñamos y desarrollamos software que combina calidad
-          técnica, foco en el usuario y resultados medibles.
-        </p>
-      </header>
+  <!-- Nuestra Empresa -->
+  <section id="empresa" class="empresa-section">
+    <div class="empresa-container">
+      <div class="empresa-content">
 
-      <article class="about-content animate-content">
-        <h2>Nuestra historia</h2>
-        <p>
-          Rusoft nace como un equipo con una convicción simple: crear soluciones
-          de software que la gente disfrute usar y que, al mismo tiempo,
-          resuelvan problemas concretos del día a día. A lo largo del tiempo,
-          fuimos creciendo junto a nuestros clientes, acompañando sus desafíos
-          de digitalización, optimización de procesos y expansión. En ese camino
-          consolidamos una forma de trabajar centrada en la transparencia, la
-          mejora continua y la cercanía. No creemos en proyectos “caja negra”:
-          nos integramos con tu equipo, compartimos avances de manera frecuente
-          y tomamos decisiones basadas en datos y en los objetivos de negocio.
-        </p>
-
-        <h2>Cómo trabajamos</h2>
-        <p>
-          Nuestra metodología combina prácticas ágiles con gestión sólida de
-          producto. Arrancamos entendiendo el contexto y los objetivos: hablamos
-          con usuarios, relevamos flujos, identificamos oportunidades y
-          priorizamos hipótesis. Con ese mapa, diseñamos prototipos de alta
-          fidelidad para validar decisiones temprano. Cuando pasamos a
-          construcción, iteramos en ciclos cortos, entregando valor de forma
-          incremental y manteniendo una calidad técnica que permita escalar sin
-          dolor. Creemos en una arquitectura simple y mantenible, tests que den
-          confianza y monitoreo que muestre lo que realmente importa.
-        </p>
-
-        <div class="about-quote">
-          <p>
-            “Construimos software que se siente bien de usar y que entrega valor
-            desde el primer release. Nuestro estándar es que cada entrega haga
-            una diferencia real para el negocio.”
+        <!-- Intro -->
+        <div class="intro-section">
+          <h2 class="intro-title">Nuestra Empresa</h2>
+          <p class="intro-description">
+            En <span class="brand-text">Rusoft</span> creemos que la tecnología no es un fin en sí mismo, sino un habilitador real del negocio. Diseñamos y desarrollamos software que combina <span class="highlight-text">calidad técnica</span>, foco en el <span class="highlight-text">usuario</span> y resultados <span class="highlight-text">medibles</span>. Nuestro compromiso es que cada entrega marque una diferencia tangible.
           </p>
         </div>
 
-        <h2>Qué hacemos</h2>
-        <p>
-          Desarrollamos sistemas a medida para distintos sectores: autogestión
-          tributaria, facturación electrónica, cuentas corrientes, control de
-          stock y gestión de fiscalizaciones, entre otros. También construimos
-          aplicaciones web y móviles orientadas a la experiencia de usuario,
-          integraciones con servicios de terceros y tableros de indicadores
-          operativos. Más allá de la tecnología, nuestro diferencial está en
-          entender el proceso de negocio detrás de cada pedido, proponer mejoras
-          y medir impacto una vez que el sistema está en producción.
-        </p>
-
-        <h2>Nuestro equipo</h2>
-        <p>
-          Somos un equipo multidisciplinario de desarrolladores, diseñadores y
-          especialistas en producto. Nos une la curiosidad, el trabajo en equipo
-          y la obsesión por los detalles que elevan la experiencia. Fomentamos
-          una cultura de feedback honesto, documentación clara y aprendizaje
-          continuo. Creemos que las mejores soluciones surgen de la combinación
-          entre buena comunicación, foco y autonomía para tomar decisiones
-          informadas.
-        </p>
-
-        <h2>Valores que nos definen</h2>
-        <ul class="about-list">
-          <li>
-            <strong>Transparencia:</strong> visibilidad total del trabajo,
-            estimaciones realistas y conversaciones abiertas sobre riesgos y
-            trade‑offs.
-          </li>
-          <li>
-            <strong>Calidad pragmática:</strong> código limpio, pruebas
-            automatizadas y monitoreo, sin burocracia innecesaria.
-          </li>
-          <li>
-            <strong>Orientación a resultados:</strong> priorizamos lo que mueve
-            la aguja del negocio y medimos el impacto de cada entrega.
-          </li>
-          <li>
-            <strong>Empatía con el usuario:</strong> diseñamos para personas, no
-            para especificaciones. La usabilidad es un requisito, no un adorno.
-          </li>
-        </ul>
-
-        <h2>Nuestro compromiso</h2>
-        <p>
-          Cada proyecto es una relación de largo plazo. Nos comprometemos con la
-          estabilidad, el rendimiento y la seguridad de las soluciones que
-          construimos. Acompañamos el ciclo completo: discovery, diseño,
-          desarrollo, despliegue y evolución. Si algo puede hacerse mejor, lo
-          proponemos. Si un objetivo cambia, nos adaptamos. Y si hay que tomar
-          decisiones difíciles, lo hacemos con datos y de la mano de nuestros
-          clientes.
-        </p>
-
-        <div class="about-grid">
-          <figure class="about-card">
-            <img src="@/assets/tarjeta1.png" alt="Diseño y prototipado" />
-            <figcaption>Diseño centrado en el usuario</figcaption>
-          </figure>
-          <figure class="about-card">
-            <img src="@/assets/tarjeta2.png" alt="Desarrollo y entrega" />
-            <figcaption>Entrega continua y calidad</figcaption>
-          </figure>
+        <!-- Historia + Cómo trabajamos -->
+        <div class="grid-section">
+          <div class="grid-item">
+            <h3 class="section-title">Nuestra historia</h3>
+            <p class="section-text">
+              Rusoft nace con una convicción simple: crear soluciones de software que la gente disfrute usar y que resuelvan problemas concretos. Crecimos junto a nuestros clientes, acompañando sus desafíos de digitalización, optimización de procesos y expansión. En ese camino consolidamos un estilo de trabajo basado en transparencia, mejora continua y cercanía: no creemos en proyectos "caja negra", sino en integrar equipos y compartir avances frecuentes.
+            </p>
+          </div>
+          <div class="grid-item">
+            <h3 class="section-title">Cómo trabajamos</h3>
+            <p class="section-text">
+              Nuestra metodología combina prácticas ágiles con gestión de producto sólida. Empezamos entendiendo contexto y objetivos, hablamos con usuarios, mapeamos flujos e identificamos oportunidades. Luego prototipamos para validar temprano y construimos en ciclos cortos, entregando valor incremental con calidad técnica. Apostamos por una arquitectura mantenible, tests automatizados y monitoreo que muestra lo que realmente importa.
+            </p>
+          </div>
         </div>
 
-        <p>
-          Si estás pensando en iniciar un nuevo producto, modernizar sistemas o
-          integrar herramientas, nos encantaría conversar. En Rusoft combinamos
-          estrategia, diseño y tecnología para llevar tus ideas a producción con
-          calidad y velocidad.
-        </p>
-      </article>
+        <!-- Cita -->
+        <blockquote class="quote-section">
+          "Construimos software que se siente bien de usar y que entrega valor desde el primer release. Nuestro estándar es que cada entrega haga una diferencia real para el negocio."
+        </blockquote>
+
+        <!-- Qué hacemos + Equipo -->
+        <div class="grid-section">
+          <div class="grid-item">
+            <h3 class="section-title">Qué hacemos</h3>
+            <p class="section-text">
+              Desarrollamos sistemas a medida para distintos sectores: autogestión tributaria, facturación electrónica, control de stock, gestión de fiscalizaciones y más. También creamos aplicaciones web y móviles con foco en la experiencia de usuario, integraciones con terceros y tableros de indicadores. Nuestro diferencial está en entender el proceso de negocio detrás de cada pedido y medir impacto una vez en producción.
+            </p>
+          </div>
+          <div class="grid-item">
+            <h3 class="section-title">Nuestro equipo</h3>
+            <p class="section-text">
+              Somos un equipo multidisciplinario de desarrolladores, diseñadores y especialistas en producto. Nos une la curiosidad, la colaboración y la obsesión por los detalles que elevan la experiencia. Fomentamos feedback honesto, documentación clara y aprendizaje continuo. Creemos que la mejor innovación surge de comunicación abierta, foco y autonomía para decidir.
+            </p>
+          </div>
+        </div>
+
+        <!-- Valores -->
+        <div class="valores-section">
+          <h3 class="valores-title">Valores que nos definen</h3>
+          <div class="valores-grid">
+            <div class="valor-card">
+              <h4 class="valor-title">Transparencia</h4>
+              <p class="valor-text">Visibilidad total del trabajo, estimaciones realistas y conversaciones abiertas sobre riesgos y decisiones.</p>
+            </div>
+            <div class="valor-card">
+              <h4 class="valor-title">Calidad pragmática</h4>
+              <p class="valor-text">Código limpio, pruebas automatizadas y monitoreo, evitando burocracia innecesaria.</p>
+            </div>
+            <div class="valor-card">
+              <h4 class="valor-title">Orientación a resultados</h4>
+              <p class="valor-text">Priorizamos lo que realmente mueve la aguja del negocio y medimos el impacto de cada entrega.</p>
+            </div>
+            <div class="valor-card">
+              <h4 class="valor-title">Empatía con el usuario</h4>
+              <p class="valor-text">Diseñamos para personas, no para especificaciones. La usabilidad es un requisito, no un adorno.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Compromiso + Diseño -->
+        <div class="grid-section">
+          <div class="grid-item">
+            <h3 class="section-title">Nuestro compromiso</h3>
+            <p class="section-text">
+              Cada proyecto es una relación de largo plazo. Acompañamos el ciclo completo: discovery, diseño, desarrollo, despliegue y evolución. Si algo puede hacerse mejor, lo proponemos. Si un objetivo cambia, nos adaptamos. Y si hay decisiones difíciles, las tomamos con datos y de la mano de nuestros clientes.
+            </p>
+          </div>
+          <div class="grid-item">
+            <h3 class="section-title">Diseño y prototipado</h3>
+            <p class="section-text">
+              Diseñamos con foco en el usuario, validamos con prototipos de alta fidelidad y entregamos de forma continua. La calidad técnica y la usabilidad guían cada release.
+            </p>
+          </div>
+        </div>
+
+        <!-- Cierre -->
+        <div class="cierre-section">
+          <p class="cierre-text">
+            Si estás pensando en iniciar un nuevo producto, modernizar sistemas o integrar herramientas, nos encantaría conversar. En <span class="brand-text">Rusoft</span> combinamos estrategia, diseño y tecnología para llevar tus ideas a producción con calidad y velocidad.
+          </p>
+        </div>
+
+      </div>
     </div>
   </section>
 </template>
 
 <style scoped>
-.nosotros-bg {
-  background-image: url('@/assets/background4.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+.empresa-section {
+  background-color: #ffffff;
+  padding: 80px 0;
 }
 
-.about-wrapper {
-  max-width: 1540px;
+.empresa-container {
+  max-width: 1152px;
   margin: 0 auto;
-  padding: 32px 16px;
+  padding: 0 16px;
 }
 
-.about-hero {
+.empresa-content {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+}
+
+/* Intro Section */
+.intro-section {
   text-align: center;
-  margin-bottom: 16px;
+  max-width: 768px;
+  margin: 0 auto;
 }
 
-.about-hero h1 {
-  margin: 0 0 6px 0;
-  color: rgb(5, 44, 89);
+.intro-title {
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0 0 24px 0;
 }
 
-.about-media {
-  position: relative;
-  overflow: hidden;
-  border-radius: 14px;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-  margin-bottom: 18px;
-  background: rgba(255, 255, 255, 0.08);
+.intro-description {
+  font-size: 1.125rem;
+  line-height: 1.75;
+  color: #475569;
+  margin: 0;
 }
 
-.about-media img {
-  display: block;
-  width: 100%;
-  height: 320px;
-  object-fit: cover;
+.brand-text {
+  font-weight: 600;
+  color: #052c59;
 }
 
-.about-content h2 {
-  margin-top: 18px;
-  margin-bottom: 8px;
-  color: rgb(5, 44, 89);
+.highlight-text {
+  font-weight: 500;
 }
 
-.about-content p {
-  line-height: 1.65;
-  opacity: 1;
-}
-
-.about-quote {
-  margin: 12px 0;
-  padding: 14px 16px;
-  border-left: 4px solid #7dd3fc;
-  background: rgba(125, 211, 252, 0.15);
-  border-radius: 8px;
-  border: 1px solid rgba(125, 211, 252, 0.2);
-}
-
-.about-list {
-  padding-left: 18px;
-}
-
-.about-list li {
-  margin-bottom: 6px;
-}
-
-.about-grid {
+/* Grid Section */
+.grid-section {
   display: grid;
-  grid-template-columns: repeat(2, minmax(300px, 1fr));
-  gap: 14px;
-  margin: 14px 0 6px 0;
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: start;
 }
 
-.about-card {
-  background: rgba(255, 255, 255, 0.18);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 12px;
-  overflow: hidden;
+.section-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #0f172a;
+  margin: 0 0 16px 0;
+}
+
+.section-text {
+  color: #475569;
+  line-height: 1.75;
+  margin: 0;
+}
+
+/* Quote Section */
+.quote-section {
+  padding: 32px;
+  background-color: #f8fafc;
+  border-left: 4px solid #052c59;
+  font-style: italic;
+  font-size: 1.125rem;
+  color: #334155;
+  max-width: 896px;
+  margin: 0 auto;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Valores Section */
+.valores-section {
   text-align: center;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-.about-card img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  display: block;
+.valores-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #0f172a;
+  margin: 0 0 32px 0;
 }
 
-.about-card figcaption {
-  padding: 10px 12px;
-  font-size: 14px;
-  opacity: 1;
+.valores-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
 }
 
-@media (max-width: 720px) {
-  .about-media img {
-    height: 240px;
-  }
-  .about-grid {
-    grid-template-columns: 1fr;
-    max-width: 100%;
-  }
+.valor-card {
+  padding: 24px;
+  background-color: #f8fafc;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-/* Animaciones de entrada */
-@keyframes slideInUp {
-  from {
-    opacity: 0;
-    transform: translateY(50px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.valor-title {
+  font-weight: 600;
+  color: #052c59;
+  margin: 0 0 8px 0;
 }
 
-@keyframes fadeInDown {
-  from {
-    opacity: 0;
-    transform: translateY(-30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.valor-text {
+  color: #475569;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  margin: 0;
 }
 
-@keyframes scaleIn {
-  from {
-    opacity: 0;
-    transform: scale(0.9);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
+/* Cierre Section */
+.cierre-section {
+  text-align: center;
+  max-width: 768px;
+  margin: 80px auto 0;
 }
 
-.animate-header {
-  animation: fadeInDown 0.8s ease-out;
-}
-
-.animate-content {
-  animation: slideInUp 1s ease-out 0.3s both;
-}
-
-/* Animaciones escalonadas para elementos específicos */
-.about-content h2 {
-  animation: slideInUp 0.8s ease-out 0.5s both;
-}
-
-.about-content p {
-  animation: slideInUp 0.8s ease-out 0.7s both;
-}
-
-.about-quote {
-  animation: scaleIn 0.6s ease-out 0.9s both;
-}
-
-.about-list {
-  animation: slideInUp 0.8s ease-out 1.1s both;
-}
-
-.about-grid {
-  animation: slideInUp 0.8s ease-out 1.3s both;
-}
-
-.about-card {
-  animation: scaleIn 0.6s ease-out 1.5s both;
+.cierre-text {
+  font-size: 1.125rem;
+  line-height: 1.75;
+  color: #334155;
+  margin: 0;
 }
 
 /* Responsive */
+@media (max-width: 1024px) {
+  .grid-section {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  
+  .valores-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 @media (max-width: 768px) {
-  .animate-content {
-    animation-delay: 0.2s;
+  .empresa-section {
+    padding: 60px 0;
   }
   
-  .about-content h2 {
-    animation-delay: 0.4s;
+  .empresa-content {
+    gap: 60px;
   }
   
-  .about-content p {
-    animation-delay: 0.6s;
+  .intro-title {
+    font-size: 1.875rem;
   }
   
-  .about-quote {
-    animation-delay: 0.8s;
+  .intro-description {
+    font-size: 1rem;
   }
   
-  .about-list {
-    animation-delay: 1s;
+  .valores-grid {
+    grid-template-columns: 1fr;
   }
   
-  .about-grid {
-    animation-delay: 1.2s;
+  .quote-section {
+    padding: 24px;
+    font-size: 1rem;
   }
   
-  .about-card {
-    animation-delay: 1.4s;
+  .cierre-section {
+    margin-top: 60px;
   }
 }
 </style>

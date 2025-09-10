@@ -1,0 +1,22 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://rusoft.com.ar/sitemap.xml
+
+# Crawl-delay
+Crawl-delay: 1
+
+# Disallow admin areas (if any)
+Disallow: /admin/
+Disallow: /api/
+Disallow: /_nuxt/
+Disallow: /node_modules/
+
+# Allow important pages
+Allow: /
+Allow: /servicios
+Allow: /nosotros
+Allow: /contacto
+Allow: /portafolio
+Allow: /cv

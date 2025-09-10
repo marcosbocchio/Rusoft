@@ -24,8 +24,8 @@
     <section id="proceso" class="process-section">
       <div class="process-container">
         <div class="process-grid">
-          <div class="process-content">
-            <h2 class="process-title">Nuestro Proceso</h2>
+          <div class="process-content" :class="{ 'animate-left': isProcessVisible }">
+            <h2 ref="processTitle" class="process-title">Nuestro Proceso</h2>
             <p class="process-subtitle">Un framework simple, iterativo y medible: del relevamiento a la entrega final.</p>
 
             <ol class="process-steps-list">
@@ -68,7 +68,7 @@
           </div>
           
           <!-- SVG del flujo de proceso -->
-          <div class="process-visual">
+          <div class="process-visual" :class="{ 'animate-right': isProcessVisible }" :style="{ transitionDelay: isProcessVisible ? '0.3s' : '0s' }">
             <svg viewBox="0 0 520 500" xmlns="http://www.w3.org/2000/svg" class="process-svg">
               <defs>
                 <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
@@ -1107,6 +1107,17 @@ export default defineComponent({
   flex: 1;
 }
 
+.process-content {
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: all 0.8s ease-out;
+}
+
+.process-content.animate-left {
+  opacity: 1;
+  transform: translateX(0);
+}
+
 .process-step-title {
   margin: 0 0 8px 0;
   font-size: 1.125rem;
@@ -1124,6 +1135,14 @@ export default defineComponent({
 .process-visual {
   display: flex;
   justify-content: center;
+  opacity: 0;
+  transform: translateX(100px);
+  transition: all 0.8s ease-out;
+}
+
+.process-visual.animate-right {
+  opacity: 1;
+  transform: translateX(0);
 }
 
 .process-svg {

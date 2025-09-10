@@ -1,17 +1,102 @@
 <!DOCTYPE html>
-<html lang="">
+<html lang="es">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title>Rusoft - Desarrollo de Software y Sistemas a Medida | Software Factory Argentina</title>
+    <meta name="description" content="Rusoft es una software factory especializada en desarrollo de sistemas a medida, aplicaciones web, móviles y soluciones de inteligencia artificial. Servicios de desarrollo de software en Argentina.">
+    <meta name="keywords" content="desarrollo de software, software factory, sistemas a medida, aplicaciones web, aplicaciones móviles, inteligencia artificial, desarrollo argentina, programación, software personalizado">
+    <meta name="author" content="Rusoft">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="Spanish">
+    <meta name="geo.region" content="AR">
+    <meta name="geo.country" content="Argentina">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://rusoft.com.ar/">
+    <meta property="og:title" content="Rusoft - Desarrollo de Software y Sistemas a Medida">
+    <meta property="og:description" content="Software factory especializada en desarrollo de sistemas a medida, aplicaciones web, móviles y soluciones de inteligencia artificial en Argentina.">
+    <meta property="og:image" content="<%= BASE_URL %>favicon.png">
+    <meta property="og:locale" content="es_AR">
+    <meta property="og:site_name" content="Rusoft">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://rusoft.com.ar/">
+    <meta property="twitter:title" content="Rusoft - Desarrollo de Software y Sistemas a Medida">
+    <meta property="twitter:description" content="Software factory especializada en desarrollo de sistemas a medida, aplicaciones web, móviles y soluciones de inteligencia artificial en Argentina.">
+    <meta property="twitter:image" content="<%= BASE_URL %>favicon.png">
+    
+    <!-- Favicon -->
     <link rel="icon" type="image/png" href="<%= BASE_URL %>favicon.png">
     <link rel="shortcut icon" type="image/png" href="<%= BASE_URL %>favicon.png">
     <link rel="apple-touch-icon" href="<%= BASE_URL %>favicon.png">
     <meta name="msapplication-TileImage" content="<%= BASE_URL %>favicon.png">
+    
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Futura+PT:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <title><%= htmlWebpackPlugin.options.title %></title>
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://rusoft.com.ar/">
+    
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Rusoft",
+      "description": "Software factory especializada en desarrollo de sistemas a medida, aplicaciones web, móviles y soluciones de inteligencia artificial",
+      "url": "https://rusoft.com.ar",
+      "logo": "https://rusoft.com.ar/favicon.png",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "customer service",
+        "availableLanguage": "Spanish"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "AR",
+        "addressRegion": "Argentina"
+      },
+      "sameAs": [],
+      "foundingDate": "2020",
+      "numberOfEmployees": "5-10",
+      "industry": "Software Development",
+      "services": [
+        "Desarrollo de Software a Medida",
+        "Aplicaciones Web",
+        "Aplicaciones Móviles",
+        "Sistemas de Gestión",
+        "Inteligencia Artificial",
+        "Consultoría en Tecnología"
+      ]
+    }
+    </script>
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Rusoft",
+      "url": "https://rusoft.com.ar",
+      "description": "Software factory especializada en desarrollo de sistemas a medida",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Rusoft"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://rusoft.com.ar/?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
   </head>
   <body>
     <noscript>

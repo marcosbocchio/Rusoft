@@ -118,6 +118,7 @@ const preloaderModule: Module<PreloaderState, any> = {
         createAsset(require('@/assets/background1.png'), 'image', 'Imagen de fondo 1'),
         createAsset(require('@/assets/background2.png'), 'image', 'Imagen de fondo 2'),
         createAsset(require('@/assets/background3.jpeg'), 'image', 'Imagen de fondo 3'),
+        createAsset(require('@/assets/background4.png'), 'image', 'Imagen de fondo 4'),
         createAsset(require('@/assets/background-contacto.png'), 'image', 'Imagen de contacto'),
         // Logo y elementos principales
         createAsset(require('@/assets/logo.png'), 'image', 'Logo principal'),

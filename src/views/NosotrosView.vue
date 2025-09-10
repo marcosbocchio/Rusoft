@@ -1,8 +1,8 @@
 <template>
-  <section class="section">
+  <section class="section nosotros-bg">
     <div class="about-wrapper">
       <header class="about-hero animate-header">
-        <h1>Nosotros</h1>
+        <h1>Nuestra Empresa</h1>
         <p class="animate-content">
           En Rusoft creemos que la tecnología debe ser un habilitador real del
           negocio. Diseñamos y desarrollamos software que combina calidad
@@ -123,6 +123,13 @@
 </template>
 
 <style scoped>
+.nosotros-bg {
+  background-image: url('@/assets/background4.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
 .about-wrapper {
   max-width: 1540px;
   margin: 0 auto;

@@ -20,7 +20,7 @@
     </section>
 
 
-    <section id="servicios" class="section bg-alt">
+    <section id="servicios" class="section bg-alt servicios-clave-bg">
       <div class="container">
         <h2 ref="servicesTitle" style="margin-top: 0">{{ services.title }}</h2>
         <div
@@ -99,7 +99,7 @@
       </div>
     </section>
 
-    <section class="section">
+    <section class="section clientes-bg">
       <div class="container">
         <h2 ref="clientsTitle" style="margin-top: 0; text-align: center; margin-bottom: 40px">
           Nuestros Clientes
@@ -809,5 +809,20 @@ export default defineComponent({
     width: 100%;
     max-width: 280px;
   }
+}
+</style>
+<style scoped>
+.servicios-clave-bg {
+  background-image: url('@/assets/background4.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.clientes-bg {
+  background-image: url('@/assets/background4.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 </style>

@@ -24,6 +24,7 @@ export const preloaderConfig: PreloaderConfig = {
   optionalAssets: [
     'background2.png',
     'background3.jpeg',
+    'background4.png',
     'background-contacto.png'
   ]
 };

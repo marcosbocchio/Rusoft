@@ -1277,20 +1277,14 @@ export default defineComponent({
 }
 
 .process-header {
-  background: linear-gradient(135deg, rgba(44,62,80,0.5), rgba(52,152,219,0.5));
-  color: #ffffff;
+  background: transparent;
+  color: rgb(5, 44, 89);
   padding: 60px 40px;
   text-align: center;
   position: relative;
 }
 
-.process-header::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M30 30c0-11.046-8.954-20-20-20s-20 8.954-20 20 8.954 20 20 20 20-8.954 20-20zm0-20c11.046 0 20-8.954 20-20s-8.954-20-20-20-20 8.954-20 20 8.954 20 20 20z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") repeat;
-  opacity: 0.04;
-}
+.process-header::before { content: none; }
 
 .process-header-title {
   font-size: 2.2rem;
@@ -1300,12 +1294,7 @@ export default defineComponent({
   z-index: 1;
 }
 
-.process-header-subtitle {
-  font-size: 1.15rem;
-  opacity: 0.95;
-  position: relative;
-  z-index: 1;
-}
+.process-header-subtitle { font-size: 1.15rem; opacity: 0.9; color: #4b5563; position: relative; z-index: 1; }
 
 .process-content {
   display: flex;

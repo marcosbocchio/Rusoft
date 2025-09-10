@@ -20,75 +20,97 @@
     </section>
 
 
-    <!-- Sección: Nuestro Proceso (estilo referencia) -->
-    <section class="section process-section">
-      <div class="process-wrapper">
-        <div class="process-header">
-          <h2 class="process-header-title">Nuestro Proceso de Desarrollo</h2>
-          <p class="process-header-subtitle">Metodología probada para entregar soluciones de software excepcionales</p>
-        </div>
+    <!-- Nuestro Proceso -->
+    <section id="proceso" class="process-section">
+      <div class="process-container">
+        <div class="process-grid">
+          <div class="process-content">
+            <h2 class="process-title">Nuestro Proceso</h2>
+            <p class="process-subtitle">Un framework simple, iterativo y medible: del relevamiento a la entrega final.</p>
 
-        <div class="process-content">
-          <div class="process-steps">
-            <div class="step">
-              <div class="step-number">1</div>
-              <div class="step-content">
-                <h3 class="step-title">Relevamiento y Análisis</h3>
-                <p class="step-description">Realizamos un análisis exhaustivo de tus necesidades, objetivos del negocio y requerimientos técnicos. Documentamos cada funcionalidad y establecemos el alcance del proyecto.</p>
-              </div>
-            </div>
-
-            <div class="step">
-              <div class="step-number">2</div>
-              <div class="step-content">
-                <h3 class="step-title">Planificación y Diseño</h3>
-                <p class="step-description">Creamos la arquitectura del sistema, diseñamos la experiencia de usuario (UX/UI) y planificamos los sprints de desarrollo. Definimos tecnologías y metodologías a utilizar.</p>
-              </div>
-            </div>
-
-            <div class="step">
-              <div class="step-number">3</div>
-              <div class="step-content">
-                <h3 class="step-title">Desarrollo Ágil</h3>
-                <p class="step-description">Implementamos el software siguiendo metodologías ágiles, con entregas incrementales y feedback continuo. Mantenemos comunicación constante durante todo el proceso.</p>
-              </div>
-            </div>
-
-            <div class="step">
-              <div class="step-number">4</div>
-              <div class="step-content">
-                <h3 class="step-title">Testing y QA</h3>
-                <p class="step-description">Ejecutamos pruebas exhaustivas: unitarias, de integración, funcionales y de rendimiento. Garantizamos la calidad y estabilidad del software antes de la entrega.</p>
-              </div>
-            </div>
-
-            <div class="step">
-              <div class="step-number">5</div>
-              <div class="step-content">
-                <h3 class="step-title">Implementación</h3>
-                <p class="step-description">Desplegamos el software en el ambiente de producción, configuramos servidores y realizamos la migración de datos si es necesario. Capacitamos a tu equipo.</p>
-              </div>
-            </div>
-
-            <div class="step">
-              <div class="step-number">6</div>
-              <div class="step-content">
-                <h3 class="step-title">Soporte y Mantenimiento</h3>
-                <p class="step-description">Brindamos soporte técnico continuo, actualizaciones de seguridad, mejoras de rendimiento y nuevas funcionalidades según evolucionen tus necesidades.</p>
-              </div>
-            </div>
+            <ol class="process-steps-list">
+              <li class="process-step-item">
+                <span class="process-step-number">1</span>
+                <div class="process-step-content">
+                  <h3 class="process-step-title">Relevamiento y Análisis</h3>
+                  <p class="process-step-text">Realizamos un análisis exhaustivo de tus necesidades, objetivos del negocio y requerimientos técnicos. Documentamos cada funcionalidad y establecemos el alcance del proyecto.</p>
+                </div>
+              </li>
+              <li class="process-step-item">
+                <span class="process-step-number">2</span>
+                <div class="process-step-content">
+                  <h3 class="process-step-title">Planificación y Diseño</h3>
+                  <p class="process-step-text">Creamos la arquitectura del sistema, diseñamos la experiencia de usuario (UX/UI) y planificamos los sprints de desarrollo. Definimos tecnologías y metodologías a utilizar.</p>
+                </div>
+              </li>
+              <li class="process-step-item">
+                <span class="process-step-number">3</span>
+                <div class="process-step-content">
+                  <h3 class="process-step-title">Desarrollo Ágil</h3>
+                  <p class="process-step-text">Implementamos el software siguiendo metodologías ágiles, con entregas incrementales y feedback continuo. Mantenemos comunicación constante durante todo el proceso.</p>
+                </div>
+              </li>
+              <li class="process-step-item">
+                <span class="process-step-number">4</span>
+                <div class="process-step-content">
+                  <h3 class="process-step-title">Testing y QA</h3>
+                  <p class="process-step-text">Ejecutamos pruebas exhaustivas: unitarias, de integración, funcionales y de rendimiento. Garantizamos la calidad y estabilidad del software antes de la entrega.</p>
+                </div>
+              </li>
+              <li class="process-step-item">
+                <span class="process-step-number">5</span>
+                <div class="process-step-content">
+                  <h3 class="process-step-title">Implementación</h3>
+                  <p class="process-step-text">Desplegamos el software en el ambiente de producción, configuramos servidores y realizamos la migración de datos si es necesario. Capacitamos a tu equipo.</p>
+                </div>
+              </li>
+            </ol>
           </div>
-
-          <div class="visual-section">
-            <div class="process-visual">
-              <div class="gear gear-1"></div>
-              <div class="gear gear-2"></div>
-              <div class="gear gear-3"></div>
-              <div class="gear gear-4"></div>
-              <div class="flow-line line-1"></div>
-              <div class="flow-line line-2"></div>
-              <div class="central-icon">⚙️</div>
-            </div>
+          
+          <!-- SVG del flujo de proceso -->
+          <div class="process-visual">
+            <svg viewBox="0 0 520 500" xmlns="http://www.w3.org/2000/svg" class="process-svg">
+              <defs>
+                <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+                  <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#000" flood-opacity="0.08"/>
+                </filter>
+              </defs>
+              <rect x="0" y="0" width="520" height="500" rx="28" fill="#ffffff" />
+              <g stroke="#052c59" stroke-opacity=".2" stroke-width="2" fill="none">
+                <path d="M40 70 H480"/>
+                <path d="M40 140 H200 V220 H480"/>
+                <path d="M40 210 H170 V300 H480"/>
+                <path d="M40 280 H220 V380 H480"/>
+                <circle cx="140" cy="70" r="3" fill="#052c59"/>
+                <circle cx="360" cy="140" r="3" fill="#052c59"/>
+                <circle cx="430" cy="220" r="3" fill="#052c59"/>
+                <circle cx="260" cy="300" r="3" fill="#052c59"/>
+                <circle cx="140" cy="380" r="3" fill="#052c59"/>
+              </g>
+              <!-- Bloques del flujo -->
+              <g filter="url(#shadow)">
+                <g transform="translate(70,60)">
+                  <rect width="140" height="70" rx="16" fill="#ffffff" stroke="#0c2a45"/>
+                  <text x="70" y="40" text-anchor="middle" font-family="Inter,ui-sans-serif" font-size="14" fill="#0c2a45">Relevamiento</text>
+                </g>
+                <g transform="translate(220,140)">
+                  <rect width="140" height="70" rx="16" fill="#ffffff" stroke="#0c2a45"/>
+                  <text x="70" y="40" text-anchor="middle" font-family="Inter,ui-sans-serif" font-size="14" fill="#0c2a45">Diseño</text>
+                </g>
+                <g transform="translate(370,220)">
+                  <rect width="140" height="70" rx="16" fill="#ffffff" stroke="#0c2a45"/>
+                  <text x="70" y="40" text-anchor="middle" font-family="Inter,ui-sans-serif" font-size="14" fill="#0c2a45">Desarrollo</text>
+                </g>
+                <g transform="translate(220,300)">
+                  <rect width="140" height="70" rx="16" fill="#ffffff" stroke="#0c2a45"/>
+                  <text x="70" y="40" text-anchor="middle" font-family="Inter,ui-sans-serif" font-size="14" fill="#0c2a45">Pruebas</text>
+                </g>
+                <g transform="translate(70,380)">
+                  <rect width="140" height="70" rx="16" fill="#ffffff" stroke="#0c2a45"/>
+                  <text x="70" y="40" text-anchor="middle" font-family="Inter,ui-sans-serif" font-size="14" fill="#0c2a45">Entrega Final</text>
+                </g>
+              </g>
+            </svg>
           </div>
         </div>
       </div>
@@ -1018,113 +1040,108 @@ export default defineComponent({
 
 /* Nuestro Proceso */
 .process-section {
-  padding-top: 40px;
-  padding-bottom: 10px;
+  background-image: url('@/assets/background4.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 80px 0;
+}
+
+.process-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 16px;
 }
 
 .process-grid {
   display: grid;
-  grid-template-columns: 1fr 1.2fr;
-  gap: 24px;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 48px;
+  align-items: center;
 }
 
 .process-title {
-  margin: 0 0 8px 0;
-  text-align: left;
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0 0 12px 0;
 }
 
 .process-subtitle {
-  margin: 0 0 18px 0;
-  color: #4b5563;
-}
-
-.process-timeline {
-  list-style: none;
-  margin: 0;
-  padding: 0 0 0 8px;
-  position: relative;
-}
-
-.process-timeline::before {
-  content: '';
-  position: absolute;
-  left: 8px;
-  top: 0;
-  bottom: 0;
-  width: 2px;
-  background: rgba(59, 130, 246, 0.25);
-}
-
-.process-item {
-  display: grid;
-  grid-template-columns: 30px 1fr;
-  column-gap: 12px;
-  padding: 8px 0 16px 0;
-  opacity: 0;
-  animation: slideInFromLeft 0.8s ease-out forwards;
-}
-
-.process-icon {
-  width: 24px;
-  height: 24px;
-  background: #e0f2fe;
-  border: 2px solid #93c5fd;
-  color: #0ea5e9;
-  border-radius: 999px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.process-content h4 {
-  margin: 0 0 6px 0;
-  color: rgb(5, 44, 89);
-}
-
-.process-content p {
-  margin: 0;
-  color: #4b5563;
+  margin: 0 0 32px 0;
+  color: #475569;
+  font-size: 1rem;
   line-height: 1.6;
 }
 
-.process-right {
+.process-steps-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.process-step-item {
   display: flex;
   align-items: flex-start;
+  gap: 16px;
+}
+
+.process-step-number {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: #052c59;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 0.875rem;
+  flex-shrink: 0;
+}
+
+.process-step-content {
+  flex: 1;
+}
+
+.process-step-title {
+  margin: 0 0 8px 0;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.process-step-text {
+  margin: 0;
+  color: #475569;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+.process-visual {
+  display: flex;
   justify-content: center;
 }
 
-.process-panel {
+.process-svg {
   width: 100%;
-  background: #ffffff;
-  border: 1px solid #e5e7eb;
-  border-radius: 12px;
-  padding: 20px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-}
-
-.process-media {
-  width: 100%;
-  max-width: 520px;
-  background: rgba(255, 255, 255, 0.18);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-}
-
-.process-media img {
-  width: 100%;
+  max-width: 700px;
   height: auto;
-  display: block;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1024px) {
   .process-grid {
     grid-template-columns: 1fr;
+    gap: 32px;
   }
+  
   .process-title {
     text-align: center;
   }
+  
   .process-subtitle {
     text-align: center;
   }
@@ -1260,121 +1277,6 @@ export default defineComponent({
   }
 }
 
-/* === Nuestro Proceso (estilo de referencia) === */
-.process-section {
-  padding: 40px 0;
-  background: transparent;
-}
-
-.process-wrapper {
-  max-width: 1540px;
-  margin: 0 auto;
-  background: rgba(255, 255, 255, 0.95);
-  border-radius: 20px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(10px);
-  overflow: hidden;
-}
-
-.process-header {
-  background: transparent;
-  color: rgb(5, 44, 89);
-  padding: 60px 40px;
-  text-align: center;
-  position: relative;
-}
-
-.process-header::before { content: none; }
-
-.process-header-title {
-  font-size: 2.2rem;
-  font-weight: 700;
-  margin: 0 0 12px 0;
-  position: relative;
-  z-index: 1;
-}
-
-.process-header-subtitle { font-size: 1.15rem; opacity: 0.9; color: #4b5563; position: relative; z-index: 1; }
-
-.process-content {
-  display: flex;
-  align-items: flex-start;
-  gap: 60px;
-  padding: 60px 40px;
-}
-
-.process-steps { flex: 1; }
-
-.step {
-  display: flex;
-  align-items: flex-start;
-  margin-bottom: 40px;
-  padding: 30px;
-  background: #f8f9fa;
-  border-radius: 15px;
-  border-left: 5px solid #3498db;
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-.step::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, rgba(52,152,219,0.05), rgba(155,89,182,0.05));
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.step:hover::before { opacity: 1; }
-.step:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
-
-.step-number {
-  background: linear-gradient(135deg, #3498db, #9b59b6);
-  color: #ffffff;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
-  font-size: 1.4rem;
-  margin-right: 25px;
-  flex-shrink: 0;
-  position: relative;
-  z-index: 1;
-}
-
-.step-title { font-size: 1.5rem; font-weight: 600; color: #2c3e50; margin: 0 0 10px 0; }
-.step-description { color: #5a6c7d; font-size: 1.1rem; line-height: 1.7; margin: 0; }
-
-.visual-section { flex: 0 0 400px; display: flex; align-items: center; justify-content: center; }
-.process-visual { width: 100%; height: 600px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 20px; position: relative; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.2); }
-
-/* Animaciones y elementos visuales */
-.gear { position: absolute; border-radius: 50%; background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border: 2px solid rgba(255,255,255,0.2); }
-.gear-1 { width: 120px; height: 120px; top: 80px; left: 60px; animation: process-rotate 10s linear infinite; }
-.gear-2 { width: 80px; height: 80px; top: 180px; right: 80px; animation: process-rotate 8s linear infinite reverse; }
-.gear-3 { width: 100px; height: 100px; bottom: 120px; left: 80px; animation: process-rotate 12s linear infinite; }
-.gear-4 { width: 60px; height: 60px; bottom: 180px; right: 60px; animation: process-rotate 6s linear infinite reverse; }
-.flow-line { position: absolute; background: rgba(255,255,255,0.3); border-radius: 2px; }
-.line-1 { width: 2px; height: 200px; top: 120px; left: 50%; transform: translateX(-50%); animation: process-pulse 2s ease-in-out infinite; }
-.line-2 { width: 150px; height: 2px; top: 50%; left: 50%; transform: translate(-50%, -50%); animation: process-pulse 2s ease-in-out infinite 0.5s; }
-.central-icon { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 80px; height: 80px; background: rgba(255,255,255,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2em; color: #ffffff; backdrop-filter: blur(10px); border: 2px solid rgba(255,255,255,0.3); animation: process-float 3s ease-in-out infinite; }
-
-@keyframes process-rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-@keyframes process-pulse { 0%,100% { opacity: .3; } 50% { opacity: .8; } }
-@keyframes process-float { 0%,100% { transform: translate(-50%, -50%) translateY(0); } 50% { transform: translate(-50%, -50%) translateY(-10px); } }
-
-@media (max-width: 900px) {
-  .process-content { flex-direction: column; gap: 40px; padding: 40px 24px; }
-  .visual-section { flex: none; }
-  .process-visual { height: 400px; }
-  .process-header-title { font-size: 2rem; }
-  .step { padding: 20px; }
-}
 </style>
 <style scoped>
 .servicios-clave-bg {
